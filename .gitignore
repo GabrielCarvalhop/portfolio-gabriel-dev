@@ -1,0 +1,22 @@
+node_modules/
+.npm-cache/
+.next/
+out/
+.env*
+!.env.example
+*.tsbuildinfo
+test-results/
+playwright-report/
+
+# Local workspace context and generated verification output.
+/sources/
+/.codex/
+/.agents/
+/AGENTS.md
+quality/**/*.png
+quality/**/*.jpg
+quality/**/*.webp
+quality/**/*.log
+quality/**/*.json
+!quality/refinement/project-assets-provenance.json
+*.log

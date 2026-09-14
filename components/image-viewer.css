@@ -1,0 +1,84 @@
+.image-viewer-trigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: inherit;
+  cursor: zoom-in;
+}
+.image-viewer-trigger:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+.image-viewer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 20px max(20px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom))
+    max(20px, env(safe-area-inset-left));
+  border: 0;
+  background: #0b0e0c;
+  color: #f1f3eb;
+}
+.image-viewer[open] {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.image-viewer::backdrop {
+  background: #0b0e0c;
+}
+.image-viewer-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 16px;
+}
+.image-viewer-back,
+.image-viewer-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  gap: 10px;
+  padding: 10px 14px;
+  color: inherit;
+  border: 1px solid #47533e;
+  border-radius: 5px;
+  background: #171d14;
+  font-size: 14px;
+}
+.image-viewer-back:hover,
+.image-viewer-close:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.image-viewer-canvas {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+.image-viewer-caption {
+  flex-shrink: 0;
+  margin: 0;
+  max-height: 20vh;
+  overflow: auto;
+  text-align: center;
+  color: #b8c0b2;
+  font-size: 14px;
+  line-height: 1.5;
+}
+@media (max-width: 600px) {
+  .image-viewer {
+    padding-top: max(12px, env(safe-area-inset-top));
+    padding-right: max(12px, env(safe-area-inset-right));
+    padding-left: max(12px, env(safe-area-inset-left));
+    gap: 12px;
+  }
+}

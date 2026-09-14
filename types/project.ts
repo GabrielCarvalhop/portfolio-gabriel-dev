@@ -1,0 +1,28 @@
+export type Category = 'Sites' | 'Sistemas' | 'E-commerce' | 'Landing Pages' | 'Experimentos';
+export type Project = {
+  id: string;
+  slug: string;
+  title: string;
+  subtitle: string;
+  category: Category;
+  year?: string;
+  client: string;
+  description: string;
+  stack: string[];
+  cover: string;
+  coverAlt?: string;
+  coverWidth?: number;
+  coverHeight?: number;
+  previewLabel?: string;
+  galleryNote?: string;
+  mediaNote?: string;
+  screenshots: { src: string; alt: string; caption: string; width?: number; height?: number }[];
+  context: string;
+  challenge: string;
+  solution: string;
+  results: string;
+  development: { label: string; value: string }[];
+  website?: string;
+  featured: boolean;
+  theme: string;
+};

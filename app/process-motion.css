@@ -1,0 +1,325 @@
+/* Each step has its own visual verb: scan, connect, assemble, iterate. */
+.process-workbench .process-list.process-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.process-workbench .process-card-grid > li {
+  position: relative;
+  isolation: isolate;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  --card-cut: 15px;
+  --card-outline: #485a3c;
+  --card-surface: #0c120e;
+}
+.process-workbench .process-card-grid > li.is-active {
+  --card-outline: var(--accent);
+  --card-surface: #162017;
+  background: transparent;
+  border: 0;
+}
+.process-workbench .process-card-grid > li:is(:hover, :focus-within) {
+  --card-outline: var(--accent);
+}
+.process-workbench .process-card-grid > li::before,
+.process-workbench .process-card-grid > li:last-child::before,
+.process-workbench .process-card-grid > li::after {
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: auto;
+  z-index: -1;
+  background: var(--card-outline);
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--card-cut)) 0,
+    100% var(--card-cut),
+    100% 100%,
+    var(--card-cut) 100%,
+    0 calc(100% - var(--card-cut))
+  );
+  transition: background 0.25s;
+  pointer-events: none;
+}
+.process-workbench .process-card-grid > li::after {
+  inset: 1px;
+  --card-cut: 14px;
+  background: linear-gradient(135deg, #c3ed8309, transparent 55%), var(--card-surface);
+}
+.process-workbench .process-card-grid > li > p {
+  display: none;
+}
+.process-workbench .process-card-grid h3 {
+  font-size: 18px;
+}
+.process-workbench .process-card-grid h3 button {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  min-height: 196px;
+  height: 100%;
+  padding: 24px;
+  gap: 0;
+  color: var(--text);
+}
+.process-workbench .process-card-grid h3 button[aria-pressed='true'] {
+  color: var(--accent);
+}
+.process-workbench .process-card-grid h3 button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 0;
+}
+.process-workbench .process-card-grid .process-index {
+  position: absolute;
+  left: 22px;
+  top: 19px;
+  width: auto;
+  height: auto;
+  padding: 0;
+  border: 0;
+  color: var(--accent);
+  background: transparent;
+  font-size: 11px;
+}
+.process-workbench .process-card-grid h3 button > svg:not(.process-glyph) {
+  position: absolute;
+  right: 21px;
+  bottom: 24px;
+  display: block;
+  width: 15px;
+  height: 15px;
+  opacity: 0.6;
+}
+.process-card-title {
+  position: relative;
+  z-index: 1;
+  max-width: calc(100% - 20px);
+  line-height: 1.25;
+  text-wrap: balance;
+}
+.process-card-rail {
+  position: absolute;
+  top: 0;
+  left: 24px;
+  width: 64px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0.5);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease);
+}
+.process-card-grid li:is(.is-active, :hover, :focus-within) .process-card-rail {
+  transform: scaleX(1);
+}
+.process-workbench .process-card-grid h3 button > .process-glyph {
+  display: block;
+  position: absolute;
+  width: 144px;
+  height: 90px;
+  top: 28px;
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%);
+  opacity: 1;
+  stroke: currentColor;
+  stroke-width: 1.2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: #a5bb92;
+  pointer-events: none;
+  transition: color 0.3s;
+}
+.process-workbench .process-card-grid li:is(.is-active, :hover, :focus-within) .process-glyph {
+  color: var(--accent);
+}
+.process-glyph .glyph-guide {
+  opacity: 0.32;
+}
+.discovery-sweep,
+.delivery-orbit {
+  transform-origin: 72px 45px;
+}
+.discovery-point {
+  fill: currentColor;
+  stroke: none;
+}
+.discovery-target {
+  opacity: 0.5;
+}
+.structure-node,
+.build-module rect {
+  fill: #141e15;
+}
+.structure-route,
+.delivery-check {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+.delivery-check {
+  stroke-width: 2;
+}
+.process-workbench .artifact-sheet > .mobile-process-description {
+  display: block;
+  font-size: 12px;
+  color: var(--text);
+  padding-block: 15px;
+  margin-top: 17px;
+  border-block: 1px solid var(--rule);
+}
+@keyframes discover-scan {
+  from {
+    rotate: -90deg;
+  }
+  to {
+    rotate: 270deg;
+  }
+}
+@keyframes discover-lock {
+  0%,
+  20% {
+    opacity: 0.25;
+  }
+  55%,
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes structure-connect {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes structure-place {
+  from {
+    opacity: 0.3;
+    translate: 0 5px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes build-assemble {
+  from {
+    translate: 0 16px;
+    opacity: 0.2;
+  }
+  to {
+    translate: 0 0;
+    opacity: 1;
+  }
+}
+@keyframes build-brackets {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes deliver-cycle {
+  from {
+    rotate: -180deg;
+  }
+  to {
+    rotate: 180deg;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .process-card-grid.is-in-view li:is(.is-active, :hover, :focus-within) .discovery-sweep {
+    animation: discover-scan 2.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+  .process-card-grid.is-in-view li:is(.is-active, :hover, :focus-within) .discovery-point,
+  .process-card-grid.is-in-view li:is(.is-active, :hover, :focus-within) .discovery-target {
+    animation: discover-lock 1.4s ease both;
+  }
+  .process-card-grid .point-b {
+    animation-delay: 0.4s !important;
+  }
+  .process-card-grid .point-c {
+    animation-delay: 0.8s !important;
+  }
+  .process-card-grid.is-in-view li:is(.is-active, :hover, :focus-within) .structure-route {
+    animation: structure-connect 1.6s var(--ease) both;
+  }
+  .process-card-grid.is-in-view li:is(.is-active, :hover, :focus-within) .structure-node {
+    animation: structure-place 0.65s var(--ease) both;
+  }
+  .process-card-grid .node-b {
+    animation-delay: 0.3s !important;
+  }
+  .process-card-grid .node-c {
+    animation-delay: 0.6s !important;
+  }
+  .process-card-grid.is-in-view li:is(.is-active, :hover, :focus-within) .build-module {
+    animation: build-assemble 0.85s var(--ease) both;
+  }
+  .process-card-grid .module-0 {
+    animation-delay: 0.4s !important;
+  }
+  .process-card-grid .module-1 {
+    animation-delay: 0.2s !important;
+  }
+  .process-card-grid.is-in-view li:is(.is-active, :hover, :focus-within) .build-braces {
+    animation: build-brackets 0.6s ease 0.6s both;
+  }
+  .process-card-grid.is-in-view li:is(.is-active, :hover, :focus-within) .delivery-orbit {
+    animation: deliver-cycle 2s var(--ease) both;
+  }
+  .process-card-grid.is-in-view li:is(.is-active, :hover, :focus-within) .delivery-check {
+    animation: structure-connect 0.65s var(--ease) 0.65s both;
+  }
+}
+@media (max-width: 1100px) {
+  .process-workbench .process-card-grid h3 {
+    font-size: 16px;
+  }
+  .process-workbench .process-card-grid h3 button {
+    min-height: 190px;
+    padding: 20px;
+  }
+  .process-workbench .process-card-grid h3 button > .process-glyph {
+    top: 29px;
+    width: 126px;
+    height: 79px;
+  }
+}
+@media (max-width: 767px) {
+  .process-workbench .process-list.process-card-grid {
+    gap: 12px;
+  }
+  .process-workbench .process-card-grid h3 {
+    font-size: 15px;
+  }
+  .process-workbench .process-card-grid h3 button {
+    min-height: 172px;
+    padding: 18px;
+  }
+  .process-workbench .process-card-grid .process-index {
+    top: 15px;
+    left: 17px;
+    font-size: 10px;
+  }
+  .process-workbench .process-card-grid h3 button > .process-glyph {
+    top: 29px;
+    width: 118px;
+    height: 74px;
+  }
+  .process-workbench .process-card-grid h3 button > svg:not(.process-glyph) {
+    right: 14px;
+    bottom: 20px;
+    width: 12px;
+  }
+  .process-card-rail {
+    left: 18px;
+  }
+}

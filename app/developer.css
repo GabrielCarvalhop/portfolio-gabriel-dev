@@ -1,0 +1,289 @@
+/* Signal paths and source code extend the portfolio's construction language. */
+body {
+  isolation: isolate;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #c3ed831b 0.7px, transparent 0.9px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(90deg, #000, transparent 32%, transparent 68%, #000);
+}
+.hero {
+  isolation: isolate;
+  min-height: 820px;
+}
+.developer-backdrop {
+  position: absolute;
+  inset-block: 0;
+  left: calc((100% - 100vw) / 2);
+  width: 100vw;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+  contain: paint;
+  mask-image: linear-gradient(180deg, transparent, #000 12%, #000 82%, transparent);
+}
+.developer-matrix {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#c3ed830a 1px, transparent 1px),
+    linear-gradient(90deg, #c3ed830a 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(90deg, transparent 20%, #000 75%);
+}
+.developer-horizon {
+  position: absolute;
+  top: 42%;
+  left: 43%;
+  width: 75%;
+  height: 70%;
+  background-image:
+    linear-gradient(#c3ed8330 1px, transparent 1px),
+    linear-gradient(90deg, #c3ed8330 1px, transparent 1px);
+  background-size: 64px 64px;
+  transform: perspective(480px) rotateX(62deg) rotateZ(-14deg);
+  mask-image: radial-gradient(ellipse, #000 12%, transparent 69%);
+}
+.developer-circuit {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--accent);
+  mask-image: linear-gradient(90deg, #000 0%, #0002 12%, #0001 40%, #000 72%);
+}
+.circuit-wires {
+  stroke: currentColor;
+  stroke-width: 0.7px;
+  opacity: 0.15;
+}
+.circuit-signals path {
+  stroke: currentColor;
+  stroke-width: 1.7px;
+  stroke-dasharray: 35 965;
+  stroke-linecap: round;
+  opacity: 0.65;
+}
+.circuit-nodes {
+  stroke: currentColor;
+  stroke-width: 0.8px;
+  opacity: 0.35;
+}
+.circuit-source {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.5px;
+  opacity: 0.18;
+  font-family: Consolas, monospace;
+  font-size: 110px;
+  letter-spacing: -0.04em;
+}
+.hero-role {
+  margin-top: 24px;
+}
+.code-console {
+  width: min(370px, 100%);
+  margin-top: 22px;
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  background: #0c120ee8;
+  box-shadow: 0 12px 28px #0002;
+  font:
+    11px/1.7 Consolas,
+    'Liberation Mono',
+    monospace;
+}
+.code-console-bar {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  padding: 7px 13px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--accent);
+}
+.code-console-bar > span:last-child {
+  margin-left: auto;
+  font-size: 9px;
+  color: var(--muted);
+}
+.code-console-source {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px 12px;
+  padding: 10px 13px;
+}
+.code-console-source code {
+  font: inherit;
+  white-space: nowrap;
+}
+.code-line-number {
+  color: #82907f;
+}
+.code-function {
+  color: var(--accent);
+}
+.code-value {
+  color: #e7c79a;
+}
+.code-comment {
+  color: var(--muted);
+}
+.code-caret {
+  display: inline-block;
+  width: 6px;
+  height: 12px;
+  margin-left: 7px;
+  vertical-align: -2px;
+  background: var(--accent);
+}
+.background-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  min-height: 44px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--bg);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+.background-toggle:hover,
+.background-toggle:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.background-toggle[aria-pressed='true'] {
+  color: var(--accent);
+}
+.project-scan {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 42%,
+    #c3ed8312 49.6%,
+    #c3ed83a0 50%,
+    transparent 50.4%
+  );
+  transform: translateY(-60%);
+}
+.button-primary {
+  position: relative;
+  overflow: hidden;
+}
+.button-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 25%, #fff5 50%, transparent 75%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+@keyframes circuit-flow {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+@keyframes source-reveal {
+  from {
+    clip-path: inset(0 85% 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+@keyframes preview-scan {
+  0% {
+    opacity: 0;
+    transform: translateY(-60%);
+  }
+  20%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(60%);
+  }
+}
+@keyframes button-sweep {
+  to {
+    transform: translateX(120%);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .circuit-signals path {
+    animation: circuit-flow 18s linear infinite;
+    animation-play-state: paused;
+  }
+  .developer-backdrop[data-running='true'][data-paused='false'] .circuit-signals path {
+    animation-play-state: running;
+  }
+  .code-console-source {
+    animation: source-reveal 0.55s steps(24, end);
+  }
+  .project-visual:is(:hover, :focus-visible) .project-scan {
+    animation: preview-scan 0.95s var(--ease);
+  }
+  .button-primary:is(:hover, :focus-visible)::after {
+    animation: button-sweep 0.65s var(--ease);
+  }
+}
+@media (max-width: 1100px) and (min-width: 768px) {
+  .hero {
+    min-height: 790px;
+  }
+  .code-console {
+    max-width: 335px;
+  }
+}
+@media (max-width: 767px) {
+  .hero {
+    min-height: 0;
+    padding-bottom: 115px;
+  }
+  .code-console {
+    margin-top: 20px;
+  }
+  .developer-circuit {
+    mask-image: linear-gradient(180deg, #0003, #000 60%, #000);
+  }
+  .developer-horizon {
+    top: 65%;
+    left: -20%;
+    width: 150%;
+    height: 40%;
+  }
+  .hero-bottom {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+  .hero-bottom > span {
+    flex-basis: 100%;
+    font-size: 8px;
+  }
+  .background-toggle {
+    font-size: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .background-toggle {
+    display: none;
+  }
+  .circuit-signals {
+    opacity: 0.4;
+  }
+  .project-scan {
+    display: none;
+  }
+}
