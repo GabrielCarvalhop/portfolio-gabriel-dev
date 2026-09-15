@@ -2,7 +2,12 @@ import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import { site } from '@/data/site';
 import { ContactAtmosphere } from '@/components/contact-atmosphere';
-export function Contact() {
+import type { ReactNode } from 'react';
+export function Contact({
+  title,
+  description,
+  actionLabel,
+}: { title?: ReactNode; description?: ReactNode; actionLabel?: string } = {}) {
   return (
     <section
       className="contact-section"
@@ -14,16 +19,24 @@ export function Contact() {
       <div className="container contact-inner">
         <div className="contact-heading">
           <h2>
-            Seu próximo produto
-            <br />
-            merece <span>atenção de perto.</span>
+            {title || (
+              <>
+                Seu próximo produto
+                <br />
+                merece <span>atenção de perto.</span>
+              </>
+            )}
           </h2>
         </div>
         <div className="contact-bottom">
           <p>
-            Um site com propósito. Um sistema que simplifica.
-            <br />
-            Uma ideia com espaço para crescer.
+            {description || (
+              <>
+                Um site com propósito. Um sistema que simplifica.
+                <br />
+                Uma ideia com espaço para crescer.
+              </>
+            )}
           </p>
           {site.contacts.length ? (
             <div className="contact-links">
@@ -35,7 +48,8 @@ export function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {contact.label === 'WhatsApp' ? 'Conversar no WhatsApp' : contact.label}
+                  {actionLabel ||
+                    (contact.label === 'WhatsApp' ? 'Conversar no WhatsApp' : contact.label)}
                   <ArrowUpRight size={18} />
                 </a>
               ))}

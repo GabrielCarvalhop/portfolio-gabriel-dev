@@ -32,6 +32,9 @@ export function Footer() {
             <Link href="/#sobre">
               Sobre mim <ArrowUpRight size={16} />
             </Link>
+            <Link href="/auditoria-seo">
+              Auditoria de SEO <ArrowUpRight size={16} />
+            </Link>
             <Link href="/#stack">
               Minha stack <ArrowUpRight size={16} />
             </Link>

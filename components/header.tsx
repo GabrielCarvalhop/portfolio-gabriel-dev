@@ -8,6 +8,7 @@ import { ProfileAvatar } from '@/components/profile-photo';
 const links = [
   { href: '/', label: 'Home' },
   { href: '/projetos', label: 'Projetos' },
+  { href: '/auditoria-seo', label: 'Auditoria de SEO' },
   { href: '/#sobre', label: 'Sobre' },
   { href: '/#stack', label: 'Stack' },
   { href: '/#contato', label: 'Contato' },
@@ -96,7 +97,7 @@ export function Header({ seoEditor = false }: { seoEditor?: boolean }) {
     };
   }, [open]);
   const active = (href: string) =>
-    href === '/configuracoes/seo'
+    href === '/configuracoes/seo' || href === '/auditoria-seo'
       ? pathname === href
       : href === '/projetos'
         ? pathname.startsWith('/projetos') || (pathname === '/' && section === 'selecionados')
