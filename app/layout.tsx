@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
+import Script from 'next/script';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Experience } from '@/components/experience';
+import { Preloader } from '@/components/preloader';
 import { site } from '@/data/site';
 import { pageMetadata } from '@/lib/metadata';
 import { readSeo, seoEditorEnabled } from '@/lib/seo-store';
@@ -14,6 +16,7 @@ import './process-motion.css';
 import './creative.css';
 import './contact-atmosphere.css';
 import './profile.css';
+import './preloader.css';
 
 const instrument = localFont({
   src: '../public/fonts/instrument-sans.woff2',
@@ -45,11 +48,15 @@ export const viewport: Viewport = { themeColor: '#0b0e0c', colorScheme: 'dark' }
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const seo = await readSeo();
   return (
-    <html lang="pt-BR" className={instrument.variable}>
+    <html lang="pt-BR" className={instrument.variable} suppressHydrationWarning>
       <body id="top">
         <a href="#main" className="skip-link">
           Pular para o conteúdo
         </a>
+        <Script id="preloader-skip" strategy="beforeInteractive">
+          {"try{if(sessionStorage.getItem('gc-intro-seen')||matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.setAttribute('data-skip-intro','')}}catch(e){}"}
+        </Script>
+        <Preloader />
         <Header seoEditor={seoEditorEnabled()} />
         {children}
         <Footer />

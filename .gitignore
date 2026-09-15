@@ -12,7 +12,9 @@ playwright-report/
 /sources/
 /.codex/
 /.agents/
+/.claude/
 /AGENTS.md
+/CLAUDE.md
 quality/**/*.png
 quality/**/*.jpg
 quality/**/*.webp
