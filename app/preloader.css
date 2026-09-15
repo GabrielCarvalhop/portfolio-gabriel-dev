@@ -92,6 +92,14 @@ html[data-skip-intro] .preloader {
   line-height: 0.85;
   letter-spacing: -0.04em;
 }
+.preloader-readout b {
+  /* Fixed box so the per-frame count never nudges the % sign sideways. */
+  display: inline-block;
+  min-width: 3ch;
+  text-align: right;
+  font-weight: inherit;
+  font-variant-numeric: tabular-nums;
+}
 .preloader-readout small {
   font-size: 0.3em;
   letter-spacing: 0.1em;
@@ -158,8 +166,9 @@ html[data-skip-intro] .preloader {
   /* +1px so an odd viewport height cannot leave a hairline of the page showing between halves. */
   height: calc(50% + 1px);
   background: var(--bg);
-  transition: transform 560ms var(--ease);
-  transition-delay: 200ms;
+  /* Not var(--ease): that curve covers most of the distance immediately and the split snaps. */
+  transition: transform 720ms cubic-bezier(0.62, 0, 0.2, 1);
+  transition-delay: 140ms;
   will-change: transform;
 }
 .panel-top {
@@ -178,11 +187,54 @@ html[data-skip-intro] .preloader {
 @keyframes pl-line-reveal {
   from {
     clip-path: inset(0 100% 0 0);
-    opacity: 0.4;
+    opacity: 0;
+    translate: 0 7px;
+  }
+  60% {
+    opacity: 1;
   }
   to {
     clip-path: inset(0 0 0 0);
     opacity: 1;
+    translate: 0 0;
+  }
+}
+/* Nothing is ever fully still: the field keeps drifting through the pauses. */
+@keyframes pl-grid-drift {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.06) translate3d(-14px, -10px, 0);
+  }
+}
+@keyframes pl-mark-settle {
+  from {
+    transform: scale(1.035);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes pl-mark-bloom {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  45% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+@keyframes pl-terminal-settle {
+  from {
+    translate: 0 10px;
+  }
+  to {
+    translate: 0 0;
   }
 }
 @keyframes pl-tick-on {
@@ -205,14 +257,17 @@ html[data-skip-intro] .preloader {
 }
 @keyframes pl-pixel-converge {
   0% {
-    transform: translate(var(--x), var(--y)) scale(1);
+    transform: translate(var(--x), var(--y)) scale(1) rotate(0deg);
     opacity: 0;
   }
-  35% {
+  30% {
     opacity: 1;
   }
+  75% {
+    opacity: 0.85;
+  }
   100% {
-    transform: translate(0, 0) scale(0.4);
+    transform: translate(0, 0) scale(0.35) rotate(45deg);
     opacity: 0;
   }
 }
@@ -242,19 +297,47 @@ html[data-skip-intro] .preloader {
     opacity: 0;
   }
 }
+/* Scales up, not down: the composition hands off to the hero instead of shrinking away. */
 @keyframes pl-content-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
   to {
     opacity: 0;
-    transform: scale(0.97);
-    filter: blur(6px);
+    transform: scale(1.06);
+    filter: blur(7px);
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  /* Keep in sync with BASE_DELAY / STEP in components/preloader.tsx. */
+  /* Keep in sync with BASE_DELAY / STEP in components/preloader.tsx.
+     Duration far exceeds the stagger on purpose: several lines stay in flight at once,
+     which is what keeps the log flowing instead of ticking over one line at a time. */
   .preloader-line {
-    animation: pl-line-reveal 320ms var(--ease) forwards;
+    animation: pl-line-reveal 560ms cubic-bezier(0.22, 0.65, 0.25, 1) forwards;
     animation-delay: calc(var(--i) * 105ms + 150ms);
+  }
+  .preloader-terminal {
+    animation: pl-terminal-settle 1400ms cubic-bezier(0.22, 0.65, 0.25, 1) both;
+  }
+  .preloader-grid {
+    animation: pl-grid-drift 14s linear both;
+  }
+  .preloader-mark {
+    animation: pl-mark-settle 1400ms cubic-bezier(0.22, 0.65, 0.25, 1) 180ms both;
+  }
+  .preloader-mark::after {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #c3ed8340, transparent 65%);
+    opacity: 0;
+    pointer-events: none;
+    animation: pl-mark-bloom 900ms var(--ease) 900ms both;
   }
   .preloader-tick {
     animation: pl-tick-on 220ms var(--ease) forwards;
@@ -266,8 +349,8 @@ html[data-skip-intro] .preloader {
     animation-delay: 180ms;
   }
   .preloader-pixels i {
-    animation: pl-pixel-converge 520ms var(--ease) forwards;
-    animation-delay: calc(150ms + var(--i) * 35ms);
+    animation: pl-pixel-converge 760ms cubic-bezier(0.33, 0.1, 0.25, 1) forwards;
+    animation-delay: calc(150ms + var(--i) * 52ms);
   }
   .preloader-caret {
     animation: pl-caret-blink 1s steps(1) infinite;
@@ -275,11 +358,10 @@ html[data-skip-intro] .preloader {
   .preloader[data-phase='exiting'] .preloader-content,
   .preloader[data-phase='exiting'] .preloader-grid,
   .preloader[data-phase='exiting'] .preloader-coordinate {
-    animation: pl-content-out 260ms var(--ease) forwards;
-    animation-delay: 40ms;
+    animation: pl-content-out 440ms cubic-bezier(0.4, 0, 0.3, 1) forwards;
   }
   .preloader[data-phase='exiting'] .preloader-scanline {
-    animation: pl-scan-sweep 480ms linear forwards;
+    animation: pl-scan-sweep 620ms cubic-bezier(0.4, 0, 0.3, 1) forwards;
   }
 }
 @media (prefers-reduced-motion: reduce) {

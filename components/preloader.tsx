@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 /** Plays once per browser session; safe to skip entirely (reduced motion, repeat loads). */
 const SEEN_KEY = 'gc-intro-seen';
@@ -26,17 +26,36 @@ const lineDelay = (index: number) => BASE_DELAY + index * STEP;
 const successIndex = LINES.length + 1 + CHECKS.length;
 const promptIndex = successIndex + 1;
 
-const PROGRESS_STEPS: [number, number][] = [
-  [1, lineDelay(0)],
-  [17, lineDelay(2)],
-  [42, lineDelay(4)],
-  [73, lineDelay(LINES.length + 2)],
-  [91, lineDelay(LINES.length + 3)],
-  [100, lineDelay(successIndex)],
+/**
+ * Monotonic but uneven: compiling moves in bursts and plateaus, never backwards.
+ * Read as [elapsed fraction, completed fraction] and interpolated per frame.
+ */
+const PROGRESS_CURVE: [number, number][] = [
+  [0, 0],
+  [0.12, 0.17],
+  [0.26, 0.21],
+  [0.44, 0.48],
+  [0.55, 0.53],
+  [0.73, 0.86],
+  [0.86, 0.9],
+  [1, 1],
 ];
+const PROGRESS_DURATION = lineDelay(successIndex);
+
+function progressAt(t: number) {
+  for (let i = 1; i < PROGRESS_CURVE.length; i += 1) {
+    const [x1, y1] = PROGRESS_CURVE[i];
+    if (t <= x1) {
+      const [x0, y0] = PROGRESS_CURVE[i - 1];
+      return y0 + ((y1 - y0) * (t - x0)) / (x1 - x0);
+    }
+  }
+  return 1;
+}
 
 const HOLD_END = lineDelay(promptIndex) + 650;
-const EXIT_DURATION = 780;
+/** Matches the panel transition in preloader.css: 140ms delay + 720ms travel. */
+const EXIT_DURATION = 860;
 const SCRAMBLE_CHARS = '01#/_-+<>[]•';
 
 /**
@@ -99,7 +118,7 @@ type Phase = 'boot' | 'exiting' | 'done';
 
 export function Preloader() {
   const [phase, setPhase] = useState<Phase>('boot');
-  const [progress, setProgress] = useState(0);
+  const counter = useRef<HTMLElement>(null);
   const success = useScramble(SUCCESS_TEXT, lineDelay(successIndex));
 
   useLayoutEffect(() => {
@@ -116,7 +135,6 @@ export function Preloader() {
         // Browser-only gate: SSR always renders the boot phase, so this has to correct
         // it client-side before paint. A lazy useState initializer would run during SSR
         // too (no window) and mismatch hydration, so this can't move out of the effect.
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         setPhase('done');
         return;
       }
@@ -132,10 +150,19 @@ export function Preloader() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Counts per frame straight into the DOM: stepping between fixed values reads as a
+  // stalled counter, and putting it in state would re-render the whole overlay each frame.
   useEffect(() => {
     if (phase !== 'boot') return;
-    const timers = PROGRESS_STEPS.map(([value, delay]) => setTimeout(() => setProgress(value), delay));
-    return () => timers.forEach(clearTimeout);
+    const node = counter.current;
+    if (!node) return;
+    const start = performance.now();
+    let frame = requestAnimationFrame(function tick(now) {
+      const elapsed = Math.min(1, (now - start) / PROGRESS_DURATION);
+      node.textContent = String(Math.round(progressAt(elapsed) * 100));
+      if (elapsed < 1) frame = requestAnimationFrame(tick);
+    });
+    return () => cancelAnimationFrame(frame);
   }, [phase]);
 
   useEffect(() => {
@@ -183,7 +210,7 @@ export function Preloader() {
           </span>
         </div>
         <span className="preloader-readout mono">
-          {progress}
+          <b ref={counter}>0</b>
           <small>%</small>
         </span>
         <div className="preloader-terminal mono">
