@@ -13,6 +13,7 @@ import {
   Code2,
 } from 'lucide-react';
 import { DeveloperBackdrop } from '@/components/developer-backdrop';
+import { ProfileAvatar } from '@/components/profile-photo';
 
 const stages = ['Estrutura', 'Interface', 'Produto'];
 const stageNotes = [
@@ -50,9 +51,12 @@ export function Hero() {
             Conheça meu trabalho <ArrowDown size={16} />
           </Link>
         </div>
-        <div className="hero-role">
-          <span className="small-cross">+</span> Gabriel Carvalho <span className="role-line" /> Web
-          Developer & Product Builder
+        <div className="hero-role hero-person">
+          <ProfileAvatar />
+          <div>
+            <strong>Gabriel Carvalho</strong>
+            <span>Desenvolvedor & Product Builder</span>
+          </div>
         </div>
         <div className="code-console" aria-hidden="true">
           <div className="code-console-bar">

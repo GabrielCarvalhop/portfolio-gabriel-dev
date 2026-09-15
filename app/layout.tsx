@@ -13,6 +13,7 @@ import './engineering.css';
 import './process-motion.css';
 import './creative.css';
 import './contact-atmosphere.css';
+import './profile.css';
 
 const instrument = localFont({
   src: '../public/fonts/instrument-sans.woff2',

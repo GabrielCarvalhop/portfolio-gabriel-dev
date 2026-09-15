@@ -4,7 +4,7 @@ import { Hero } from '@/components/hero';
 import { ProjectCard } from '@/components/project-card';
 import { Contact } from '@/components/contact';
 import { projects } from '@/data/projects';
-import { ProfileBlueprint } from '@/components/profile-blueprint';
+import { ProfilePortrait } from '@/components/profile-photo';
 import { StackWorkbench, ProcessWorkbench } from '@/components/engineering-workbench';
 
 const stack = [
@@ -101,7 +101,7 @@ export default function Home() {
       <section className="about-section section" id="sobre" data-inspect-label="About / editorial">
         <div className="container about-grid">
           <div className="about-label">
-            <ProfileBlueprint />
+            <ProfilePortrait />
           </div>
           <div className="about-copy" data-arrive>
             <h2>

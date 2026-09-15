@@ -1,0 +1,120 @@
+.profile-avatar {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid #c3ed8355;
+  border-radius: 50% 50% 12% 50%;
+  background: #1c211e;
+}
+.profile-avatar img {
+  object-fit: cover;
+  object-position: 20% 25%;
+  transform: scale(1.5);
+  transform-origin: left top;
+}
+.header .brand:hover .profile-avatar {
+  border-color: var(--accent);
+}
+.hero .hero-person {
+  gap: 13px;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.hero-person > div {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+.hero-person strong {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+}
+.hero-person > div > span {
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.about-grid .about-label {
+  min-width: 0;
+  align-self: center;
+}
+.profile-portrait {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid #c3ed832e;
+  border-radius: 3px 56px 3px 3px;
+  background: #171b19;
+  box-shadow: 0 24px 60px #0003;
+}
+.profile-portrait-image {
+  position: absolute;
+  inset: 0;
+}
+.profile-portrait-image img {
+  object-fit: cover;
+  object-position: 12% center;
+}
+.profile-portrait::after {
+  content: '';
+  position: absolute;
+  inset: 35% 0 0;
+  pointer-events: none;
+  background: linear-gradient(transparent, #0b0e0c66 46%, #0b0e0cf5);
+}
+.profile-portrait figcaption {
+  position: absolute;
+  inset: auto 28px 30px;
+  z-index: 1;
+  display: grid;
+  gap: 10px;
+}
+.profile-portrait-label {
+  color: #c3ed83;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.profile-portrait figcaption strong {
+  color: #f1f2ed;
+  font-size: clamp(24px, 2.7vw, 38px);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+}
+.profile-portrait figcaption strong span {
+  color: #c3ed83;
+}
+.profile-portrait figcaption > span:last-child {
+  color: #c1c8bf;
+  font-size: 12px;
+}
+@media (max-width: 767px) {
+  .header .profile-avatar {
+    width: 40px;
+    height: 40px;
+  }
+  .profile-portrait {
+    max-width: 480px;
+    aspect-ratio: 1 / 1.1;
+    margin-inline: auto;
+    border-top-right-radius: 40px;
+  }
+  .about-grid .about-label {
+    display: block;
+  }
+  .profile-portrait figcaption {
+    inset: auto 22px 24px;
+  }
+  .profile-portrait figcaption strong {
+    font-size: clamp(27px, 7vw, 36px);
+  }
+}

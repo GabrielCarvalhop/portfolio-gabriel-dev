@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
-import { BrandMark } from '@/components/brand-mark';
+import { ProfileAvatar } from '@/components/profile-photo';
 
 const links = [
   { href: '/', label: 'Home' },
@@ -106,9 +106,7 @@ export function Header({ seoEditor = false }: { seoEditor?: boolean }) {
       <div className="reading-progress" aria-hidden="true" />
       <div className="container header-inner">
         <Link href="/" className="brand" onClick={() => setOpen(false)}>
-          <span className="monogram" aria-hidden="true">
-            <BrandMark />
-          </span>
+          <ProfileAvatar preload />
           <span className="brand-name">
             Gabriel Carvalho<span>Desenvolvedor & Product Builder</span>
           </span>
