@@ -4,6 +4,8 @@ import { useEffect, useLayoutEffect, useState } from 'react';
 
 /** Plays once per browser session; safe to skip entirely (reduced motion, repeat loads). */
 const SEEN_KEY = 'gc-intro-seen';
+/** Dev replays it on every reload, otherwise it is unwatchable while working on it. */
+const REPLAY_ALWAYS = process.env.NODE_ENV === 'development';
 
 const LINES = [
   '> iniciando sistema',
@@ -106,7 +108,7 @@ export function Preloader() {
       try {
         skip =
           window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
-          sessionStorage.getItem(SEEN_KEY) === '1';
+          (!REPLAY_ALWAYS && sessionStorage.getItem(SEEN_KEY) === '1');
       } catch {
         skip = false;
       }

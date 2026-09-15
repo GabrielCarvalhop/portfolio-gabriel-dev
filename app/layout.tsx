@@ -53,8 +53,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <a href="#main" className="skip-link">
           Pular para o conteúdo
         </a>
+        {/* Hides the intro before hydration so a repeat load never flashes it. Dev skips the
+            session check so the sequence stays watchable while working on it. */}
         <Script id="preloader-skip" strategy="beforeInteractive">
-          {"try{if(sessionStorage.getItem('gc-intro-seen')||matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.setAttribute('data-skip-intro','')}}catch(e){}"}
+          {`try{if(${process.env.NODE_ENV === 'development' ? 'false' : "sessionStorage.getItem('gc-intro-seen')"}||matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.setAttribute('data-skip-intro','')}}catch(e){}`}
         </Script>
         <Preloader />
         <Header seoEditor={seoEditorEnabled()} />
