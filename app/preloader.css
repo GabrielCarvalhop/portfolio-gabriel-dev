@@ -15,7 +15,8 @@ html[data-skip-intro] .preloader {
   position: absolute;
   inset: 0;
   z-index: 1;
-  opacity: 0.6;
+  /* A whisper only: DESIGN.md keeps the fine grid a stage surface, never a page background. */
+  opacity: 0.45;
   background-image:
     linear-gradient(#c3ed830d 1px, transparent 1px),
     linear-gradient(90deg, #c3ed830d 1px, transparent 1px);
@@ -39,7 +40,7 @@ html[data-skip-intro] .preloader {
   top: 30px;
   right: 34px;
   color: #7d8b76;
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: 0.12em;
 }
 .preloader-content {
