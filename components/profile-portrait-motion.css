@@ -1,0 +1,308 @@
+/* The static portrait is the fallback. All reconstruction layers are local and finite. */
+.portrait-assembly .portrait-render-effects {
+  display: none;
+}
+.portrait-assembly .portrait-decode {
+  position: relative;
+}
+.portrait-assembly figcaption strong > .portrait-copy {
+  color: inherit;
+}
+.portrait-assembly .portrait-cipher {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+  color: var(--accent);
+  opacity: 0;
+}
+.portrait-hover-edge {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .portrait-assembly[data-render='waiting'],
+  .portrait-assembly[data-render='running'] {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+  }
+  .portrait-assembly[data-render='waiting'] .profile-portrait-image,
+  .portrait-assembly[data-render='waiting'] figcaption,
+  .portrait-assembly[data-render='waiting']::after {
+    opacity: 0;
+  }
+  .portrait-assembly[data-render='running'] .portrait-render-effects {
+    display: block;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .portrait-assembly[data-render='running'] .profile-portrait-image {
+    animation: portrait-image-build 1500ms cubic-bezier(0.25, 0.6, 0.3, 1) both;
+  }
+  .portrait-assembly[data-render='running']::after {
+    animation: portrait-shade-in 1500ms ease both;
+  }
+  .portrait-assembly[data-render='running'] figcaption {
+    z-index: 3;
+  }
+  .portrait-assembly[data-render='running'] .portrait-copy {
+    display: block;
+    animation: portrait-copy-build 430ms var(--ease) var(--copy-delay) both;
+  }
+  .portrait-assembly[data-render='running'] .portrait-cipher {
+    animation: portrait-cipher-pass 390ms linear var(--copy-delay) both;
+  }
+  .portrait-tiles {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+  }
+  .portrait-tiles > i {
+    position: relative;
+    background: var(--bg);
+    transform-origin: var(--pixel-x) var(--pixel-y);
+    animation: portrait-tile-resolve 420ms var(--ease) var(--tile-delay) both;
+  }
+  .portrait-tiles > i:nth-child(3n)::after {
+    content: '';
+    position: absolute;
+    top: var(--pixel-y);
+    left: var(--pixel-x);
+    width: 3px;
+    height: 3px;
+    background: var(--accent);
+    opacity: 0.55;
+    box-shadow: 9px -5px 0 -1px #c3ed8360;
+  }
+  .portrait-wire {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    animation: portrait-wire-pass 1350ms ease both;
+  }
+  .portrait-wire path {
+    stroke: var(--accent);
+    stroke-width: 0.12;
+    stroke-dasharray: 1;
+    animation: portrait-wire-draw 1000ms ease both;
+  }
+  .portrait-wire rect {
+    fill: var(--accent);
+  }
+  .portrait-code {
+    position: absolute;
+    font:
+      9px/1.4 Consolas,
+      monospace;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    animation: portrait-code-pass 650ms ease both;
+  }
+  .portrait-code.code-a {
+    top: 8%;
+    left: 7%;
+    animation-delay: 70ms;
+  }
+  .portrait-code.code-b {
+    top: 43%;
+    right: 7%;
+    animation-delay: 480ms;
+  }
+  .portrait-code.code-c {
+    top: 72%;
+    left: 10%;
+    animation-delay: 880ms;
+  }
+  .portrait-scan {
+    position: absolute;
+    inset: 0;
+    border-bottom: 1px solid #c3ed83b3;
+    background: linear-gradient(transparent 96%, #c3ed8314);
+    animation: portrait-scan-pass 1340ms cubic-bezier(0.32, 0.5, 0.3, 1) 120ms both;
+  }
+  .portrait-render-edge {
+    position: absolute;
+    inset: 0;
+    border: 1px solid #c3ed8390;
+    border-radius: inherit;
+    animation: portrait-border-build 1650ms linear both;
+  }
+}
+@keyframes portrait-image-build {
+  0%,
+  10% {
+    clip-path: inset(0 0 100%);
+    opacity: 0.12;
+  }
+  65% {
+    opacity: 1;
+  }
+  100% {
+    clip-path: inset(0);
+    opacity: 1;
+  }
+}
+@keyframes portrait-tile-resolve {
+  0%,
+  16% {
+    opacity: 1;
+    transform: scale(1.01);
+  }
+  58% {
+    opacity: 0.7;
+    transform: scale(0.46);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.05);
+  }
+}
+@keyframes portrait-border-build {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+  }
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+  }
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+    opacity: 0.9;
+  }
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+    opacity: 0;
+  }
+}
+@keyframes portrait-scan-pass {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  12%,
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}
+@keyframes portrait-wire-pass {
+  0% {
+    opacity: 0;
+  }
+  22% {
+    opacity: 0.22;
+  }
+  65% {
+    opacity: 0.12;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes portrait-wire-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes portrait-code-pass {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  25%,
+  65% {
+    opacity: 0.55;
+  }
+}
+@keyframes portrait-shade-in {
+  0%,
+  35% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes portrait-copy-build {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0);
+    opacity: 1;
+  }
+}
+@keyframes portrait-cipher-pass {
+  0%,
+  80% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 767px) and (prefers-reduced-motion: no-preference) {
+  .portrait-wire,
+  .portrait-code.code-b {
+    display: none;
+  }
+  .portrait-tiles {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .portrait-tiles > i:nth-child(even) {
+    display: none;
+  }
+  .portrait-tiles > i:nth-child(3n)::after {
+    box-shadow: none;
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .portrait-assembly[data-render='complete'] .profile-portrait-image {
+    transition: filter 350ms ease;
+  }
+  .portrait-assembly[data-render='complete']:hover .profile-portrait-image {
+    filter: brightness(1.035);
+  }
+  .portrait-assembly[data-render='complete']:hover .portrait-hover-edge {
+    border: 1px solid #c3ed8370;
+    animation: portrait-border-build 900ms ease-out both;
+  }
+  .portrait-assembly[data-render='complete']:hover .portrait-hover-edge::after {
+    content: '';
+    position: absolute;
+    top: 12%;
+    right: 2px;
+    width: 3px;
+    height: 3px;
+    background: var(--accent);
+    box-shadow: -7px 8px 0 -1px var(--accent);
+    animation: portrait-code-pass 350ms ease both;
+  }
+}

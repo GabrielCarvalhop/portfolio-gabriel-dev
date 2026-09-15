@@ -4,7 +4,7 @@ import { Hero } from '@/components/hero';
 import { ProjectCard } from '@/components/project-card';
 import { Contact } from '@/components/contact';
 import { projects } from '@/data/projects';
-import { ProfilePortrait } from '@/components/profile-photo';
+import { ProfilePortrait } from '@/components/profile-portrait';
 import { StackWorkbench, ProcessWorkbench } from '@/components/engineering-workbench';
 
 const stack = [
