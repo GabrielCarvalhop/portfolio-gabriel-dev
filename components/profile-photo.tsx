@@ -8,6 +8,7 @@ export function ProfileAvatar({ preload = false }: { preload?: boolean }) {
         alt=""
         fill
         sizes="80px"
+        quality={90}
         preload={preload}
       />
     </span>

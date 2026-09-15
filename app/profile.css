@@ -14,14 +14,23 @@
   flex: 0 0 auto;
   overflow: hidden;
   isolation: isolate;
-  border: 1px solid #c3ed8355;
-  border-radius: 50% 50% 12% 50%;
+  border: 1px solid #93a98777;
+  border-radius: 14px 6px 14px 6px;
   background: #1c211e;
+  box-shadow: 0 3px 10px #0003;
+}
+.profile-avatar::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border: 1px solid #f1f2ed16;
+  border-radius: 11px 3px 11px 3px;
+  pointer-events: none;
 }
 .profile-avatar img {
   object-fit: cover;
-  object-position: 20% 25%;
-  transform: scale(1.5);
+  object-position: left top;
+  transform: scale(1.28);
   transform-origin: left top;
 }
 .header .brand:hover .profile-avatar {
