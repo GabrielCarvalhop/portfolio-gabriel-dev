@@ -216,19 +216,6 @@ html[data-skip-intro] .preloader {
     transform: scale(1);
   }
 }
-@keyframes pl-mark-bloom {
-  0% {
-    opacity: 0;
-    transform: scale(0.6);
-  }
-  45% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.5);
-  }
-}
 @keyframes pl-terminal-settle {
   from {
     translate: 0 10px;
@@ -327,17 +314,6 @@ html[data-skip-intro] .preloader {
   }
   .preloader-mark {
     animation: pl-mark-settle 1400ms cubic-bezier(0.22, 0.65, 0.25, 1) 180ms both;
-  }
-  .preloader-mark::after {
-    content: '';
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #c3ed8340, transparent 65%);
-    opacity: 0;
-    pointer-events: none;
-    animation: pl-mark-bloom 900ms var(--ease) 900ms both;
   }
   .preloader-tick {
     animation: pl-tick-on 220ms var(--ease) forwards;
