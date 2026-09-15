@@ -22,7 +22,8 @@ export function ProfilePortrait() {
           src="/images/profile/gabriel-carvalho.png"
           alt="Retrato de Gabriel Carvalho"
           fill
-          sizes="(max-width: 767px) 90vw, (max-width: 1023px) 42vw, 520px"
+          sizes="(max-width: 767px) 150vw, (max-width: 1023px) 70vw, 960px"
+          quality={90}
         />
       </div>
       <figcaption>

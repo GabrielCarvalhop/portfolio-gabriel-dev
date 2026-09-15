@@ -61,7 +61,7 @@
 }
 .profile-portrait-image img {
   object-fit: cover;
-  object-position: 12% center;
+  object-position: left center;
 }
 .profile-portrait::after {
   content: '';
