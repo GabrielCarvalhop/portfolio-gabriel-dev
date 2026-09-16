@@ -6,11 +6,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     '',
     '/projetos',
+    '/criacao-de-sites',
     '/auditoria-seo',
     ...projects.map((project) => `/projetos/${project.slug}`),
   ].map((path) => ({
     url: `${site.url}${path}`,
     changeFrequency: 'monthly',
-    priority: path === '' ? 1 : path === '/projetos' ? 0.9 : 0.7,
+    priority:
+      path === ''
+        ? 1
+        : path === '/projetos' || path === '/criacao-de-sites'
+          ? 0.9
+          : 0.7,
   }));
 }
