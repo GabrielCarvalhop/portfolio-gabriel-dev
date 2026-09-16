@@ -14,16 +14,16 @@
   flex: 0 0 auto;
   overflow: hidden;
   isolation: isolate;
-  border: 1px solid #93a98777;
+  border: 1px solid #8f96a177;
   border-radius: 14px 6px 14px 6px;
-  background: #1c211e;
+  background: #1d1e20;
   box-shadow: 0 3px 10px #0003;
 }
 .profile-avatar::after {
   content: '';
   position: absolute;
   inset: 2px;
-  border: 1px solid #f1f2ed16;
+  border: 1px solid #f4f6f816;
   border-radius: 11px 3px 11px 3px;
   pointer-events: none;
 }
@@ -67,9 +67,9 @@
   aspect-ratio: 4 / 5;
   margin: 0;
   overflow: hidden;
-  border: 1px solid #c3ed832e;
+  border: 1px solid #5b8cff2e;
   border-radius: 3px 56px 3px 3px;
-  background: #171b19;
+  background: #18191a;
   box-shadow: 0 24px 60px #0003;
 }
 .profile-portrait-image {
@@ -85,7 +85,7 @@
   position: absolute;
   inset: 35% 0 0;
   pointer-events: none;
-  background: linear-gradient(transparent, #0b0e0c66 46%, #0b0e0cf5);
+  background: linear-gradient(transparent, #090b0e66 46%, #090b0ef5);
 }
 .profile-portrait figcaption {
   position: absolute;
@@ -95,23 +95,23 @@
   gap: 10px;
 }
 .profile-portrait-label {
-  color: #c3ed83;
+  color: #5b8cff;
   font-size: 10px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 .profile-portrait figcaption strong {
-  color: #f1f2ed;
+  color: #f4f6f8;
   font-size: clamp(24px, 2.7vw, 38px);
   font-weight: 500;
   letter-spacing: -0.045em;
   line-height: 1.1;
 }
 .profile-portrait figcaption strong span {
-  color: #c3ed83;
+  color: #5b8cff;
 }
 .profile-portrait figcaption > span:last-child {
-  color: #c1c8bf;
+  color: #c1c3c6;
   font-size: 12px;
 }
 @media (max-width: 767px) {

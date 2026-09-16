@@ -11,12 +11,12 @@
   padding: 0;
   background: transparent;
   --card-cut: 15px;
-  --card-outline: #485a3c;
-  --card-surface: #0c120e;
+  --card-outline: #434953;
+  --card-surface: #0d0f11;
 }
 .process-workbench .process-card-grid > li.is-active {
   --card-outline: var(--accent);
-  --card-surface: #162017;
+  --card-surface: #181a1e;
   background: transparent;
   border: 0;
 }
@@ -47,7 +47,7 @@
 .process-workbench .process-card-grid > li::after {
   inset: 1px;
   --card-cut: 14px;
-  background: linear-gradient(135deg, #c3ed8309, transparent 55%), var(--card-surface);
+  background: linear-gradient(135deg, #5b8cff09, transparent 55%), var(--card-surface);
 }
 .process-workbench .process-card-grid > li > p {
   display: none;
@@ -131,7 +131,7 @@
   stroke-width: 1.2px;
   stroke-linecap: round;
   stroke-linejoin: round;
-  color: #a5bb92;
+  color: #9ba3b2;
   pointer-events: none;
   transition: color 0.3s;
 }
@@ -154,7 +154,7 @@
 }
 .structure-node,
 .build-module rect {
-  fill: #141e15;
+  fill: #16181c;
 }
 .structure-route,
 .delivery-check {

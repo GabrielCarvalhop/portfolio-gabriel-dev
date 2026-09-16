@@ -18,8 +18,8 @@ html[data-skip-intro] .preloader {
   /* A whisper only: DESIGN.md keeps the fine grid a stage surface, never a page background. */
   opacity: 0.45;
   background-image:
-    linear-gradient(#c3ed830d 1px, transparent 1px),
-    linear-gradient(90deg, #c3ed830d 1px, transparent 1px);
+    linear-gradient(#5b8cff0d 1px, transparent 1px),
+    linear-gradient(90deg, #5b8cff0d 1px, transparent 1px);
   background-size: 34px 34px;
   mask-image: radial-gradient(ellipse at center, #000 30%, transparent 76%);
 }
@@ -31,7 +31,7 @@ html[data-skip-intro] .preloader {
   height: 2px;
   opacity: 0;
   background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  filter: drop-shadow(0 0 6px #c3ed8380);
+  filter: drop-shadow(0 0 6px #5b8cff80);
   pointer-events: none;
 }
 .preloader-coordinate {
@@ -39,7 +39,7 @@ html[data-skip-intro] .preloader {
   z-index: 2;
   top: 30px;
   right: 34px;
-  color: #7d8b76;
+  color: #7b7f86;
   font-size: 9px;
   letter-spacing: 0.12em;
 }
@@ -103,7 +103,7 @@ html[data-skip-intro] .preloader {
   fill: none;
 }
 .readout-track {
-  stroke: #46543c;
+  stroke: #41464f;
   stroke-width: 1;
   /* Fine ticks around the dial: an instrument face, not a loading donut. */
   stroke-dasharray: 0.4 1.6;
@@ -134,7 +134,7 @@ html[data-skip-intro] .preloader {
   font-size: 0.4em;
   letter-spacing: 0.08em;
   padding-top: 0.3em;
-  color: #7f9463;
+  color: #6e7889;
 }
 .preloader-terminal {
   position: absolute;
@@ -161,13 +161,13 @@ html[data-skip-intro] .preloader {
   display: flex;
   align-items: center;
   gap: 9px;
-  color: #c7d0c2;
+  color: #c5c8cd;
 }
 .preloader-tick {
   width: 7px;
   height: 7px;
   flex-shrink: 0;
-  border: 1px solid #55684a;
+  border: 1px solid #515761;
   border-radius: 1px;
 }
 .preloader-success {
@@ -257,7 +257,7 @@ html[data-skip-intro] .preloader {
 @keyframes pl-tick-on {
   from {
     background: transparent;
-    border-color: #55684a;
+    border-color: #515761;
   }
   to {
     background: var(--accent);

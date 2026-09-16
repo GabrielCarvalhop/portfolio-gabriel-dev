@@ -12,8 +12,8 @@
   font-size: 12px;
 }
 .contact-section {
-  background: #0b120e;
-  border-color: #45533c;
+  background: #0d0e10;
+  border-color: #41464e;
 }
 .contact-atmosphere {
   position: absolute;
@@ -22,27 +22,27 @@
   pointer-events: none;
   overflow: hidden;
   contain: paint;
-  background: linear-gradient(110deg, #0b120e 15%, #152519 100%);
+  background: linear-gradient(110deg, #0d0e10 15%, #191c21 100%);
 }
 .contact-atmosphere::after {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, #0b120ee8 8%, #0b120eb0 40%, transparent 78%),
-    linear-gradient(0deg, #0b120e, transparent 28%, transparent 84%, #0b120e80);
+    linear-gradient(90deg, #0d0e10e8 8%, #0d0e10b0 40%, transparent 78%),
+    linear-gradient(0deg, #0d0e10, transparent 28%, transparent 84%, #0d0e1080);
 }
 .contact-atmosphere svg {
   width: 100%;
   height: 100%;
 }
 .data-lanes {
-  stroke: #c3ed83;
+  stroke: #5b8cff;
   stroke-width: 0.7;
   opacity: 0.14;
 }
 .data-packets {
-  stroke: #d5f5a9;
+  stroke: #79a2ff;
   stroke-width: 2;
   stroke-linecap: round;
 }
@@ -52,7 +52,7 @@
 }
 .data-gate {
   transform-origin: 1100px 300px;
-  stroke: #c3ed83;
+  stroke: #5b8cff;
   stroke-width: 0.7;
   opacity: 0.2;
 }
@@ -78,11 +78,11 @@
   transform: scale(1.5);
 }
 .gate-corners {
-  stroke: #d5f5a9;
+  stroke: #79a2ff;
   stroke-width: 1.5;
 }
 .data-core {
-  stroke: #c3ed83;
+  stroke: #5b8cff;
   opacity: 0.35;
 }
 .contact-motion-toggle {
@@ -95,10 +95,10 @@
   gap: 8px;
   min-height: 44px;
   padding: 8px 12px;
-  border: 1px solid #526149;
+  border: 1px solid #4e535c;
   border-radius: 4px;
-  background: #0b120ed9;
-  color: #c1cbb9;
+  background: #0d0e10d9;
+  color: #bdc1c7;
   font-size: 10px;
   transition:
     border-color 0.2s,
@@ -152,10 +152,10 @@
   .contact-atmosphere::after {
     background: linear-gradient(
       180deg,
-      #0b120ee8 0%,
-      #0b120eb0 26%,
+      #0d0e10e8 0%,
+      #0d0e10b0 26%,
       transparent 60%,
-      #0b120ee8 100%
+      #0d0e10e8 100%
     );
   }
   .contact-motion-toggle {

@@ -22,8 +22,8 @@
   padding: 20px max(20px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom))
     max(20px, env(safe-area-inset-left));
   border: 0;
-  background: #0b0e0c;
-  color: #f1f3eb;
+  background: #090b0e;
+  color: #edeef1;
 }
 .image-viewer[open] {
   display: flex;
@@ -31,7 +31,7 @@
   gap: 18px;
 }
 .image-viewer::backdrop {
-  background: #0b0e0c;
+  background: #090b0e;
 }
 .image-viewer-toolbar {
   display: flex;
@@ -49,9 +49,9 @@
   gap: 10px;
   padding: 10px 14px;
   color: inherit;
-  border: 1px solid #47533e;
+  border: 1px solid #43474e;
   border-radius: 5px;
-  background: #171d14;
+  background: #16181b;
   font-size: 14px;
 }
 .image-viewer-back:hover,
@@ -70,7 +70,7 @@
   max-height: 20vh;
   overflow: auto;
   text-align: center;
-  color: #b8c0b2;
+  color: #b5b8bd;
   font-size: 14px;
   line-height: 1.5;
 }

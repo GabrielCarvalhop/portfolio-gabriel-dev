@@ -13,7 +13,7 @@
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: linear-gradient(115deg, #c3ed830b, transparent 52%);
+  background: linear-gradient(115deg, #5b8cff0b, transparent 52%);
 }
 .about-grid {
   gap: clamp(48px, 6vw, 100px);
@@ -33,7 +33,7 @@
   width: 100%;
   aspect-ratio: 1;
   isolation: isolate;
-  background-image: radial-gradient(circle, #c3ed8340 0.6px, transparent 1px);
+  background-image: radial-gradient(circle, #5b8cff40 0.6px, transparent 1px);
   background-size: 18px 18px;
   mask-image: linear-gradient(#000 90%, transparent);
 }
@@ -41,12 +41,12 @@
   width: 100%;
   height: 100%;
   position: absolute;
-  stroke: #c3ed833d;
+  stroke: #5b8cff3d;
   stroke-width: 1;
   transition: rotate 0.5s var(--ease);
 }
 .blueprint-track {
-  stroke: #c3ed8345;
+  stroke: #5b8cff45;
 }
 .blueprint-signal {
   stroke: var(--accent);
@@ -63,8 +63,8 @@
   height: 29%;
   font-size: clamp(62px, 6vw, 100px);
   border-radius: 28% 0 28% 0;
-  border-color: #c3ed8380;
-  background: #111a12;
+  border-color: #5b8cff80;
+  background: #131518;
   box-shadow: 0 18px 36px #0005;
   transition:
     translate 0.4s var(--ease),
@@ -153,11 +153,11 @@
 .journey > div > span {
   border: 1px solid var(--rule);
   padding: 7px 10px;
-  background: #c3ed8305;
+  background: #5b8cff05;
 }
 
 .section-code-mark {
-  color: #c3ed8370;
+  color: #5b8cff70;
   align-self: center;
 }
 .stack-workbench {
@@ -194,7 +194,7 @@
   transition: transform 0.4s var(--ease);
 }
 .stack-workbench .stack-group.is-active {
-  background: #141e15;
+  background: #16181c;
 }
 .stack-workbench .stack-group.is-active::before {
   transform: scaleX(1);
@@ -225,7 +225,7 @@
   width: 7px;
   height: 7px;
   margin-left: auto;
-  border: 1px solid #a5ada6;
+  border: 1px solid #929ba5;
   border-radius: 50%;
 }
 .stack-layer-button[aria-pressed='true'] .layer-port {
@@ -278,7 +278,7 @@
   align-items: center;
   min-height: 150px;
   padding: 26px 28px;
-  background: #111811;
+  background: #131416;
   border: 1px solid var(--rule);
   border-top: 0;
   border-radius: 0 0 6px 6px;
@@ -306,7 +306,7 @@
 }
 .layer-flow > span > span {
   font-size: 11px;
-  border: 1px solid #536646;
+  border: 1px solid #4d545f;
   border-radius: 3px;
   padding: 12px 10px;
   color: var(--accent);
@@ -321,10 +321,10 @@
 }
 
 .process-section {
-  background: #111611;
+  background: #121315;
 }
 .process-section::after {
-  background-image: repeating-linear-gradient(90deg, transparent 0 119px, #c3ed8305 119px 120px);
+  background-image: repeating-linear-gradient(90deg, transparent 0 119px, #5b8cff05 119px 120px);
   mask-image: linear-gradient(90deg, transparent 35%, #000);
 }
 .process-workbench {
@@ -389,8 +389,8 @@
   top: 6px;
   width: 29px;
   height: 29px;
-  border: 1px solid #536646;
-  background: #111611;
+  border: 1px solid #4d545f;
+  background: #121315;
   font:
     10px Consolas,
     monospace;
@@ -402,7 +402,7 @@
 .process-list .is-active .process-index {
   background: var(--accent);
   border-color: var(--accent);
-  color: #182013;
+  color: #16191d;
 }
 .process-workbench .process-list p {
   max-width: 420px;
@@ -412,7 +412,7 @@
 .process-artifact {
   position: sticky;
   top: 130px;
-  border: 1px solid #46583b;
+  border: 1px solid #424751;
   border-radius: 6px;
   background: var(--bg);
   box-shadow: 0 20px 48px #0003;
@@ -434,7 +434,7 @@
 .artifact-sheet {
   padding: 30px;
   min-height: 400px;
-  background: linear-gradient(145deg, #c3ed8307, transparent);
+  background: linear-gradient(145deg, #5b8cff07, transparent);
 }
 .mobile-process-description {
   display: none;
@@ -529,14 +529,14 @@
   flex: 1;
 }
 .services-list details[open] {
-  background: #141e15;
-  border-color: #667c54;
+  background: #16181c;
+  border-color: #5d6573;
 }
 .services-list details[open] summary {
   color: var(--accent);
 }
 .services-list summary:hover {
-  background: #c3ed8308;
+  background: #5b8cff08;
 }
 .services-list .service-content {
   padding: 0 30px 28px 63px;
@@ -555,9 +555,9 @@
   width: 168px;
   margin: auto;
   padding: 10px 12px;
-  border: 1px solid #647954;
+  border: 1px solid #5c6471;
   border-radius: 5px;
-  background: #111811;
+  background: #131416;
 }
 .service-browser > span {
   display: inline-block;
@@ -583,8 +583,8 @@
   border-top: 1px solid var(--rule);
 }
 .service-browser i {
-  border: 1px solid #536646;
-  background: #c3ed8308;
+  border: 1px solid #4d545f;
+  background: #5b8cff08;
   transition: background 0.3s;
 }
 .service-browser i:first-child {
@@ -593,7 +593,7 @@
 .service-system > svg {
   width: 100%;
   height: 76px;
-  stroke: #647954;
+  stroke: #5c6471;
   stroke-width: 1;
 }
 .service-ports {
@@ -620,7 +620,7 @@
   font-size: 11px;
 }
 .services-section:has(details[open]) .service-browser i {
-  background: #c3ed8326;
+  background: #5b8cff26;
 }
 .services-section:has(details:nth-child(1)[open]) .service-ports > span:first-child,
 .services-section:has(details:nth-child(2)[open]) .service-ports > span:nth-child(2),
@@ -634,9 +634,9 @@
   position: relative;
   isolation: isolate;
   overflow: clip;
-  background: #111a12;
+  background: #131518;
   color: var(--text);
-  border-block: 1px solid #536646;
+  border-block: 1px solid #4d545f;
 }
 .contact-inner {
   position: relative;
@@ -654,12 +654,12 @@
   z-index: -1;
   width: 100%;
   height: 100%;
-  stroke: #c3ed8326;
+  stroke: #5b8cff26;
   stroke-width: 1;
   mask-image: linear-gradient(90deg, #0001 10%, #000 100%);
 }
 .contact-circuit .contact-signal {
-  stroke: #c3ed83a0;
+  stroke: #5b8cffa0;
   stroke-dasharray: 1;
 }
 .contact-launch {
@@ -671,10 +671,10 @@
   flex-shrink: 0;
   width: 170px;
   height: 170px;
-  border: 1px solid #c3ed8370;
+  border: 1px solid #5b8cff70;
   border-radius: 32px 0 32px 0;
   background: var(--accent);
-  color: #182013;
+  color: #16191d;
   transition:
     background 0.3s,
     border-radius 0.4s var(--ease);
@@ -688,20 +688,20 @@
   font-size: 11px;
 }
 .contact-launch:hover {
-  background: #d5f5a9;
+  background: #79a2ff;
   border-radius: 0 32px 0 32px;
 }
 .contact-launch:hover .contact-arrow {
   translate: 5px -5px;
 }
 .contact-bottom {
-  border-top: 1px solid #c3ed8326;
+  border-top: 1px solid #5b8cff26;
   margin-top: 42px;
   padding-top: 27px;
 }
 .contact-bottom p,
 .contact-soon {
-  color: #c1cbb9;
+  color: #bdc1c7;
 }
 .contact-soon .status-dot {
   background: var(--accent);
@@ -710,7 +710,7 @@
   color: var(--accent);
 }
 .contact-fallback:hover {
-  color: #d5f5a9;
+  color: #79a2ff;
 }
 .contact-section :focus-visible {
   outline-color: var(--accent);
@@ -731,7 +731,7 @@
   border-color: var(--accent);
 }
 .footer-bottom {
-  border-top-color: #46583b;
+  border-top-color: #424751;
 }
 
 @keyframes blueprint-connect {
@@ -951,7 +951,7 @@
   }
   .process-workbench .process-list li.is-active {
     border-color: var(--accent);
-    background: #141e15;
+    background: #16181c;
   }
   .process-workbench .process-list h3 button {
     flex-direction: column;

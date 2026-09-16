@@ -2,14 +2,15 @@
 name: Gabriel Carvalho — Construction to Product
 description: A dark editorial product dossier with original interface studies.
 colors:
-  primary: '#c3ed83'
-  primary-hover: '#d5f5a9'
-  primary-ink: '#182013'
-  neutral-bg: '#0b0e0c'
-  neutral-surface: '#141a16'
-  neutral-text: '#f1f2ed'
-  neutral-muted: '#a5ada6'
-  neutral-rule: '#303830'
+  primary: '#5b8cff'
+  primary-hover: '#79a2ff'
+  primary-ink: '#16191d'
+  neutral-bg: '#090b0e'
+  neutral-surface: '#11151a'
+  neutral-surface-elevated: '#171c22'
+  neutral-text: '#f4f6f8'
+  neutral-muted: '#929ba5'
+  neutral-rule: '#252c35'
 typography:
   display:
     fontFamily: 'Instrument Sans, sans-serif'
@@ -96,23 +97,26 @@ The original first-surface contract is preserved as provenance: discover the app
 
 ## Colors
 
-Green-tinted charcoal, warm pale text and soft acid-green emphasis define the palette. Frontmatter values are the normative extracted tokens.
+**16 September migration, dark premium tech:** the acid-green identity read as organic and was replaced end to end with a cool graphite base and a controlled blue accent, better matched to a developer/product-builder positioning. Every literal color in every stylesheet was converted programmatically (HSL hue rotation: colors already near-neutral got desaturated toward the new cool gray; colors carrying real saturation became the new accent blue at equivalent lightness), so shade relationships and contrast levels carry over from the previous system rather than being redesigned from scratch. The three deliberately non-green literals already in the codebase (project-card brown/teal tints, the code-console's warm syntax-highlight tan) were left untouched by that pass. Frontmatter values are the normative extracted tokens.
+
+Graphite charcoal, cool pale text and controlled blue emphasis define the palette.
 
 ### Primary
 
-- **Soft Acid Green** (`primary`): hero emphasis, primary actions, selected filters, stage controls, focus and project indices.
-- **Pale Acid Green** (`primary-hover`): primary-button hover feedback.
-- **Forest Ink** (`primary-ink`): readable text on the primary action.
+- **Signal Blue** (`primary`): hero emphasis, primary actions, selected filters, stage controls, focus and project indices. Used for words, states, indicators, cursors and small graphic details — never as a large fill. The one exception is CTA-scale elements (the primary button, the contact circular launch button): filling a control that small and purposeful is not the "block" the accent is restricted from.
+- **Signal Blue Hover** (`primary-hover`): primary-button and CTA hover feedback.
+- **Graphite Ink** (`primary-ink`): readable text on the primary action.
 
 ### Neutral
 
-- **Green Charcoal** (`neutral-bg`): page canvas and navigation foundation.
-- **Raised Forest** (`neutral-surface`): quiet interactive surface feedback.
-- **Warm Chalk** (`neutral-text`): headings and primary text.
-- **Sage Gray** (`neutral-muted`): supporting copy and inactive navigation.
-- **Forest Rule** (`neutral-rule`): section rules and control outlines.
+- **Graphite** (`neutral-bg`): page canvas and navigation foundation.
+- **Raised Graphite** (`neutral-surface`): quiet interactive surface feedback; also the base for structural bands (the tools strip) that used to be solid accent fills and are now dark, lined and typographic instead.
+- **Elevated Graphite** (`neutral-surface-elevated`): a further step up for surfaces that sit above a raised surface (cards on cards, popovers).
+- **Cool Chalk** (`neutral-text`): headings and primary text.
+- **Cool Gray** (`neutral-muted`): supporting copy and inactive navigation.
+- **Graphite Rule** (`neutral-rule`): section rules and control outlines.
 
-Project artwork uses contextual brown, olive, gray-green and blue-green backdrops. They support individual studies and are not additional global action colors.
+Project artwork uses contextual brown, olive, gray-green and blue-green backdrops. They support individual studies and are not additional global action colors, and were not touched by the palette migration.
 
 **The Accent Role Rule.** Use the acid accent for emphasis, identity and interaction; preserve the dark editorial canvas around it.
 

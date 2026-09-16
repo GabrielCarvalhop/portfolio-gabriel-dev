@@ -84,7 +84,7 @@
     height: 3px;
     background: var(--accent);
     opacity: 0.55;
-    box-shadow: 9px -5px 0 -1px #c3ed8360;
+    box-shadow: 9px -5px 0 -1px #5b8cff60;
   }
   .portrait-wire {
     position: absolute;
@@ -129,14 +129,14 @@
   .portrait-scan {
     position: absolute;
     inset: 0;
-    border-bottom: 1px solid #c3ed83b3;
-    background: linear-gradient(transparent 96%, #c3ed8314);
+    border-bottom: 1px solid #5b8cffb3;
+    background: linear-gradient(transparent 96%, #5b8cff14);
     animation: portrait-scan-pass 1340ms cubic-bezier(0.32, 0.5, 0.3, 1) 120ms both;
   }
   .portrait-render-edge {
     position: absolute;
     inset: 0;
-    border: 1px solid #c3ed8390;
+    border: 1px solid #5b8cff90;
     border-radius: inherit;
     animation: portrait-border-build 1650ms linear both;
   }
@@ -291,7 +291,7 @@
     filter: brightness(1.035);
   }
   .portrait-assembly[data-render='complete']:hover .portrait-hover-edge {
-    border: 1px solid #c3ed8370;
+    border: 1px solid #5b8cff70;
     animation: portrait-border-build 900ms ease-out both;
   }
   .portrait-assembly[data-render='complete']:hover .portrait-hover-edge::after {

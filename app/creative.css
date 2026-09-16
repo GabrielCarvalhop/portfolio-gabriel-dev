@@ -1,11 +1,11 @@
 /* A continuous thread: folded geometry, exhibition stages, editorial pauses. */
 body::before {
-  background-image: linear-gradient(90deg, #c3ed8310 1px, transparent 1px);
+  background-image: linear-gradient(90deg, #5b8cff10 1px, transparent 1px);
   background-size: calc((100vw - 112px) / 12) 100%;
   mask-image: linear-gradient(90deg, #0006, transparent 20%, transparent 80%, #0006);
 }
 .header {
-  border-bottom-color: #c3ed8320;
+  border-bottom-color: #5b8cff20;
 }
 .header-inner {
   height: 84px;
@@ -79,42 +79,72 @@ body::before {
   opacity: 0.45;
 }
 .hero-art .wire-layer {
-  border-color: #c3ed8370;
+  border-color: #5b8cff70;
 }
+/* A dark technical strip, not a solid accent band: the fill stays neutral and the
+   blue is limited to the label mark, the divider dots and the hover state. */
 .tech-strip {
   position: relative;
   overflow: clip;
   padding-block: 30px;
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #182013;
+  background: var(--surface);
+  border-color: var(--rule);
 }
 .tech-strip > .container {
   gap: 40px;
 }
 .tech-strip .strip-label {
-  color: #374729;
+  position: relative;
+  padding-left: 16px;
+  color: var(--muted);
   font-size: 10px;
   max-width: 130px;
   white-space: normal;
   line-height: 1.6;
+}
+.tech-strip .strip-label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
 }
 .tech-strip .container > div {
   flex-wrap: wrap;
   gap: 16px 26px;
 }
 .tech-strip .container > div > span {
-  color: #182013;
+  position: relative;
+  padding-left: 20px;
+  color: var(--text);
   font-size: clamp(16px, 1.6vw, 23px);
   letter-spacing: -0.035em;
+  transition: color 0.2s;
+}
+.tech-strip .container > div > span:first-child {
+  padding-left: 0;
+}
+.tech-strip .container > div > span:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  width: 3px;
+  height: 3px;
+  translate: 0 -50%;
+  background: var(--rule);
+}
+.tech-strip .container > div > span:hover {
+  color: var(--accent);
 }
 .tech-strip::after {
   content: '';
   position: absolute;
   inset: auto 0 0;
-  height: 5px;
-  background: repeating-linear-gradient(90deg, #182013 0 1px, transparent 1px 12px);
-  opacity: 0.3;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, var(--rule) 0 1px, transparent 1px 12px);
 }
 .section {
   padding-block: clamp(80px, 9vw, 145px);
@@ -148,7 +178,7 @@ body::before {
 }
 .project-showcase .project-visual {
   border-radius: 0 0 38px 0;
-  border: 1px solid #dceaca30;
+  border: 1px solid #d1d8e330;
   box-shadow: 0 32px 60px -35px #000a;
 }
 .project-stage-floor {
@@ -156,9 +186,9 @@ body::before {
   inset: 0;
   z-index: -1;
   background-image:
-    linear-gradient(150deg, #f4ffe615, transparent 55%),
-    linear-gradient(#edf5e710 1px, transparent 1px),
-    linear-gradient(90deg, #edf5e710 1px, transparent 1px);
+    linear-gradient(150deg, #e6edff15, transparent 55%),
+    linear-gradient(#eaedf210 1px, transparent 1px),
+    linear-gradient(90deg, #eaedf210 1px, transparent 1px);
   background-size:
     100% 100%,
     55px 55px,
@@ -174,7 +204,7 @@ body::before {
   line-height: 1;
   letter-spacing: -0.04em;
   color: transparent;
-  -webkit-text-stroke: 1px #eef4e72b;
+  -webkit-text-stroke: 1px #eaedf12b;
   pointer-events: none;
 }
 .project-frame {
@@ -187,8 +217,8 @@ body::before {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: #0b0e0c9c;
-  border: 1px solid #efffd14d;
+  background: #090b0e9c;
+  border: 1px solid #d1dfff4d;
 }
 .project-showcase .project-copy > p {
   font-size: 15px;
@@ -199,7 +229,7 @@ body::before {
 }
 .project-showcase .tech-tags > span {
   border: 0;
-  border-bottom: 1px solid #566347;
+  border-bottom: 1px solid #4d535d;
   border-radius: 0;
   padding: 8px 0;
   margin-right: 12px;
@@ -228,12 +258,12 @@ body::before {
 }
 
 .about-section {
-  background: #111810;
-  border-color: #45533c;
+  background: #121316;
+  border-color: #41464e;
 }
 .about-section::after {
   inset: 0 0 0 50%;
-  background: repeating-linear-gradient(135deg, #c3ed8307 0 1px, transparent 1px 18px);
+  background: repeating-linear-gradient(135deg, #5b8cff07 0 1px, transparent 1px 18px);
   mask-image: linear-gradient(90deg, transparent, #000);
 }
 .about-grid {
@@ -266,21 +296,21 @@ body::before {
   content: '';
   position: absolute;
   inset: 10%;
-  border: 1px solid #c3ed8325;
+  border: 1px solid #5b8cff25;
   border-radius: 50%;
   box-shadow: 10px 40px 60px #0003;
-  background: #0b0e0c70;
+  background: #090b0e70;
 }
 .blueprint-traces {
-  stroke: #c3ed8345;
+  stroke: #5b8cff45;
 }
 .blueprint-core.monogram {
   box-shadow: 12px 30px 40px #0007;
-  background: #1e2d19;
+  background: #1e2229;
 }
 .blueprint-node {
   box-shadow: 6px 16px 30px #0004;
-  border-color: #536845;
+  border-color: #4d5460;
 }
 .journey > div > span {
   background: transparent;
@@ -298,21 +328,21 @@ body::before {
 }
 .stack-workbench .stack-grid {
   border-radius: 0;
-  border-color: #526149;
+  border-color: #4e535c;
 }
 .stack-workbench .stack-group {
   padding: 30px 28px;
 }
 .stack-workbench .stack-group.is-active {
-  background: #192417;
+  background: #1a1d21;
 }
 .stack-workbench .stack-group h3 {
   font-size: clamp(22px, 2.15vw, 30px);
   margin-bottom: 24px;
 }
 .stack-explanation {
-  background: #101810;
-  border-color: #526149;
+  background: #121316;
+  border-color: #4e535c;
   border-radius: 0 0 24px 0;
 }
 .stack-layer-button {
@@ -325,23 +355,23 @@ body::before {
   padding-left: 0;
 }
 .stack-group li > a::before {
-  background: #c3ed8310;
+  background: #5b8cff10;
 }
 .process-section {
-  background: #121811;
-  border-color: #45533c;
+  background: #131416;
+  border-color: #41464e;
 }
 .process-section::after {
   inset: 0;
   background-image:
-    linear-gradient(90deg, transparent 49.9%, #c3ed831a 50%, transparent 50.1%),
-    repeating-linear-gradient(-35deg, #c3ed8306 0 1px, transparent 1px 48px);
+    linear-gradient(90deg, transparent 49.9%, #5b8cff1a 50%, transparent 50.1%),
+    repeating-linear-gradient(-35deg, #5b8cff06 0 1px, transparent 1px 48px);
 }
 .process-heading {
   max-width: 900px;
 }
 .process-heading .title-line:last-child {
-  color: #b3bfa9;
+  color: #aeb2ba;
 }
 .process-artifact {
   box-shadow: 12px 32px 55px #0005;
@@ -378,8 +408,8 @@ body::before {
   transform: rotate(90deg);
 }
 .contact-section {
-  background: #192514;
-  border-color: #6c8251;
+  background: #181b21;
+  border-color: #5c6677;
 }
 .contact-inner {
   padding-block: 125px 65px;
@@ -453,7 +483,7 @@ body::before {
   justify-content: center;
   width: 58px;
   height: 64px;
-  border: 1px solid #526149;
+  border: 1px solid #4e535c;
   border-radius: 18px 0 18px 0;
   font-size: 36px;
   letter-spacing: -0.04em;
@@ -471,7 +501,7 @@ body::before {
   margin-block: 21px 18px;
   font-size: 15px;
   line-height: 1.55;
-  color: #c1cbb9;
+  color: #bdc1c7;
 }
 .closing-built {
   display: inline-flex;
@@ -525,9 +555,9 @@ body::before {
   min-height: 192px;
   width: 100%;
   text-align: left;
-  border: 1px solid #526149;
+  border: 1px solid #4e535c;
   border-radius: 0 0 22px 0;
-  background: #111810;
+  background: #121316;
   transition:
     border-color 0.3s,
     background 0.3s;
@@ -537,13 +567,13 @@ body::before {
   position: absolute;
   inset: 7px;
   z-index: -1;
-  border: 1px solid #c3ed8310;
+  border: 1px solid #5b8cff10;
   border-radius: 0 0 16px 0;
   pointer-events: none;
 }
 .closing-inspect:is(:hover, :focus-visible, [aria-pressed='true']) {
   border-color: var(--accent);
-  background: #192417;
+  background: #1a1d21;
 }
 .closing-diagram {
   flex-shrink: 0;
@@ -554,7 +584,7 @@ body::before {
   width: 100%;
   height: 100%;
   overflow: visible;
-  stroke: #809569;
+  stroke: #737c8b;
   stroke-width: 1;
 }
 .closing-layer {
@@ -563,7 +593,7 @@ body::before {
     stroke 0.3s;
 }
 .closing-layer.layer-front {
-  fill: #24331c;
+  fill: #21262e;
   stroke: var(--accent);
 }
 .closing-inspect-copy {
@@ -577,7 +607,7 @@ body::before {
   letter-spacing: -0.025em;
 }
 .closing-inspect-description {
-  color: #b3bfa9;
+  color: #aeb2ba;
   font-size: 12px;
   line-height: 1.6;
 }
@@ -593,7 +623,7 @@ body::before {
   position: absolute;
   right: 16px;
   top: 16px;
-  color: #b3bfa9;
+  color: #aeb2ba;
   transition: transform 0.3s var(--ease);
 }
 .closing-inspect:is(:hover, :focus-visible) .closing-inspect-arrow {
@@ -630,7 +660,7 @@ body::before {
   gap: 16px;
   min-height: 44px;
   font-size: 11px;
-  color: #c1cbb9;
+  color: #bdc1c7;
 }
 .closing-top > span {
   width: 34px;
@@ -1107,14 +1137,14 @@ body::before {
     font-size: 10px;
   }
   .mobile-nav:not([hidden]) {
-    background: #11180f;
+    background: #111316;
     padding-bottom: 36px;
   }
   .mobile-nav > a {
     font-size: 30px;
     letter-spacing: -0.03em;
     padding-block: 17px;
-    border-bottom: 1px solid #c3ed8325;
+    border-bottom: 1px solid #5b8cff25;
   }
 }
 @media (max-width: 374px) {
@@ -1130,13 +1160,13 @@ body::before {
 }
 .monogram:has(.gc-signature) {
   padding: 3px;
-  background: #11180f;
+  background: #111316;
   border-radius: 10px 2px 10px 2px;
 }
 .blueprint-core.monogram:has(.gc-signature) {
   padding: clamp(8px, 1.2vw, 18px);
   border-radius: 22% 3% 22% 3%;
-  background: linear-gradient(145deg, #26351e, #10180f);
+  background: linear-gradient(145deg, #232830, #111316);
 }
 .closing-mark:has(.gc-signature) {
   display: flex;
@@ -1155,7 +1185,7 @@ body::before {
 /* Preserve supplied captures at their natural proportion. */
 .screens-grid .screen-image-link {
   display: block;
-  background: #182016;
+  background: #181a1e;
   padding: 24px;
   border: 1px solid var(--rule);
   border-radius: 6px;

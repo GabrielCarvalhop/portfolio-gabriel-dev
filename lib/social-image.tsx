@@ -9,15 +9,15 @@ export function socialImage(title: string, detail = 'Developer & Product Builder
         justifyContent: 'space-between',
         width: '100%',
         height: '100%',
-        background: '#0b0e0c',
-        color: '#f1f2ed',
+        background: '#090b0e',
+        color: '#f4f6f8',
         padding: '62px 72px',
         fontFamily: 'sans-serif',
       }}
     >
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <BrandMark width={76} height={61} />
-        <span style={{ fontSize: 20, color: '#a5ada6' }}>DESIGN + CÓDIGO + PRODUTO</span>
+        <span style={{ fontSize: 20, color: '#929ba5' }}>DESIGN + CÓDIGO + PRODUTO</span>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 25 }}>
         <div
@@ -36,7 +36,7 @@ export function socialImage(title: string, detail = 'Developer & Product Builder
           style={{
             fontSize: detail.length > 160 ? 21 : 27,
             lineHeight: 1.35,
-            color: '#a5ada6',
+            color: '#929ba5',
             maxWidth: 1020,
             wordBreak: 'break-all',
           }}
@@ -44,10 +44,10 @@ export function socialImage(title: string, detail = 'Developer & Product Builder
           {detail}
         </div>
       </div>
-      <div style={{ display: 'flex', height: 2, background: '#303830' }} />
+      <div style={{ display: 'flex', height: 2, background: '#252c35' }} />
       <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 18 }}>
         <span>Do primeiro traço ao próximo produto.</span>
-        <span style={{ color: '#c3ed83' }}>GABRIEL CARVALHO ↗</span>
+        <span style={{ color: '#5b8cff' }}>GABRIEL CARVALHO ↗</span>
       </div>
     </div>,
     { width: 1200, height: 630 },

@@ -44,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: { index: seo.indexable, follow: seo.indexable },
   };
 }
-export const viewport: Viewport = { themeColor: '#0b0e0c', colorScheme: 'dark' };
+export const viewport: Viewport = { themeColor: '#090b0e', colorScheme: 'dark' };
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const seo = await readSeo();
   return (
