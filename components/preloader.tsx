@@ -119,6 +119,7 @@ type Phase = 'boot' | 'exiting' | 'done';
 export function Preloader() {
   const [phase, setPhase] = useState<Phase>('boot');
   const counter = useRef<HTMLElement>(null);
+  const arc = useRef<SVGCircleElement>(null);
   const success = useScramble(SUCCESS_TEXT, lineDelay(successIndex));
 
   useLayoutEffect(() => {
@@ -156,10 +157,14 @@ export function Preloader() {
     if (phase !== 'boot') return;
     const node = counter.current;
     if (!node) return;
+    const ring = arc.current;
     const start = performance.now();
     let frame = requestAnimationFrame(function tick(now) {
       const elapsed = Math.min(1, (now - start) / PROGRESS_DURATION);
-      node.textContent = String(Math.round(progressAt(elapsed) * 100));
+      const value = progressAt(elapsed);
+      node.textContent = String(Math.round(value * 100));
+      // Sub-integer precision here, so the arc keeps gliding between whole percentages.
+      if (ring) ring.style.strokeDashoffset = String(100 - value * 100);
       if (elapsed < 1) frame = requestAnimationFrame(tick);
     });
     return () => cancelAnimationFrame(frame);
@@ -209,10 +214,16 @@ export function Preloader() {
             ))}
           </span>
         </div>
-        <span className="preloader-readout mono">
-          <b ref={counter}>0</b>
-          <small>%</small>
-        </span>
+        <div className="preloader-readout">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <circle className="readout-track" cx="60" cy="60" r="54" pathLength="100" />
+            <circle className="readout-arc" ref={arc} cx="60" cy="60" r="54" pathLength="100" />
+          </svg>
+          <span className="readout-value mono">
+            <b ref={counter}>0</b>
+            <small>%</small>
+          </span>
+        </div>
         <div className="preloader-terminal mono">
           {LINES.map((line, index) => (
             <div className="preloader-line" style={{ '--i': index } as React.CSSProperties} key={line}>
