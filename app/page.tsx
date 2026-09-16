@@ -7,6 +7,7 @@ import { projects } from '@/data/projects';
 import { ProfilePortrait } from '@/components/profile-portrait';
 import { StackWorkbench, ProcessWorkbench } from '@/components/engineering-workbench';
 
+const techStrip = ['Next.js', 'React', 'TypeScript', 'Supabase', 'Node.js', 'PostgreSQL'];
 const stack = [
   {
     title: 'O que você vê.',
@@ -68,12 +69,13 @@ export default function Home() {
         <div className="container">
           <span className="strip-label">FERRAMENTAS, NÃO LIMITES.</span>
           <div>
-            {['Next.js', 'React', 'TypeScript', 'Supabase', 'Node.js', 'PostgreSQL', 'Vercel'].map(
-              (tech) => (
-                <span key={tech}>{tech}</span>
-              ),
-            )}
+            {techStrip.map((tech) => (
+              <span key={tech}>{tech}</span>
+            ))}
           </div>
+          <span className="strip-count mono">
+            {String(techStrip.length).padStart(2, '0')} / STACK
+          </span>
         </div>
       </div>
       <section className="container section selected-projects" id="selecionados">
