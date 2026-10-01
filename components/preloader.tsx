@@ -20,8 +20,10 @@ const SUCCESS_TEXT = 'BUILD SUCCESSFUL';
 /** Survives the StrictMode remount, so the session gate below runs once per page load, not once per mount. */
 let introStarted = false;
 
-const BASE_DELAY = 150;
-const STEP = 105;
+// Slower than the first pass on purpose: at 105ms/line the log was an unreadable flicker,
+// which read as rushed rather than deliberate. Keep in sync with preloader.css.
+const BASE_DELAY = 200;
+const STEP = 190;
 const lineDelay = (index: number) => BASE_DELAY + index * STEP;
 const successIndex = LINES.length + 1 + CHECKS.length;
 const promptIndex = successIndex + 1;
@@ -53,7 +55,7 @@ function progressAt(t: number) {
   return 1;
 }
 
-const HOLD_END = lineDelay(promptIndex) + 650;
+const HOLD_END = lineDelay(promptIndex) + 800;
 /** Matches the panel transition in preloader.css: 140ms delay + 720ms travel. */
 const EXIT_DURATION = 860;
 const SCRAMBLE_CHARS = '01#/_-+<>[]•';
