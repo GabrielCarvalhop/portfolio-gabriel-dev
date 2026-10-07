@@ -13,7 +13,7 @@ try {
   for (const [name, path] of [
     ['home', '/'],
     ['projects', '/projetos'],
-    ['case', '/projetos/sistema-pdv-adegas'],
+    ['case', '/projetos/sistema-pdv'],
   ]) {
     const result = await lighthouse(`http://localhost:3000${path}`, {
       port: 9223,

@@ -5,7 +5,7 @@ A capa foi recomposta com geração de imagem para reunir a tela de Venda e a na
 - Referência Venda: `C:/Users/gabri/AppData/Local/Temp/codex-clipboard-ac3cd3b8-4c6f-443f-8fd8-247b572d628f.png`
 - Referência de navegação: `C:/Users/gabri/AppData/Local/Temp/codex-clipboard-88e7d11b-ac07-4bf2-9b98-7f119ca80a6a.png`
 - Saída da ferramenta: `C:/Users/gabri/.codex/generated_images/01a07e41-24cf-7012-9070-bf91e62f2f88/exec-85959ef8-edad-455f-8b9c-a5f6dbae3f2f.png`
-- Arquivo usado no projeto: `public/projects/pdv-cover.png`
+- Arquivo usado no projeto: `public/projects/pdv-capa.png` (renomeado; o nome da marca na barra lateral foi substituído depois)
 
 ## Prompt utilizado
 

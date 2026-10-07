@@ -1195,12 +1195,12 @@ body::before {
   padding: 4px;
   border-radius: 14px 2px 14px 2px;
 }
-.project-showcase.adega .project-frame {
+.project-showcase.pdv .project-frame {
   inset: 12% 5%;
 }
-.adega .project-frame img,
-.adega .case-cover img,
-.adega .screens-grid img {
+.pdv .project-frame img,
+.pdv .case-cover img,
+.pdv .screens-grid img {
   height: auto;
 }
 
@@ -1235,7 +1235,7 @@ body::before {
 .screens-grid--captures figure:has(img[src*='commerce-produto']) {
   max-width: 520px;
 }
-.project-showcase.adega .project-frame {
+.project-showcase.pdv .project-frame {
   inset: 12% 16%;
 }
 @media (max-width: 767px) {
@@ -1246,7 +1246,7 @@ body::before {
   .screens-grid .screen-image-link {
     padding: 10px;
   }
-  .project-showcase.adega .project-frame {
+  .project-showcase.pdv .project-frame {
     inset: 12% 6%;
   }
 }

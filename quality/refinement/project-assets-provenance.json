@@ -45,8 +45,8 @@
     "processing": "Original user-supplied screenshot, copied unchanged"
   },
   {
-    "asset": "public/projects/pdv-caixa.png",
+    "asset": "public/projects/pdv-caixas.png",
     "source": "C:/Users/gabri/AppData/Local/Temp/codex-clipboard-88e7d11b-ac07-4bf2-9b98-7f119ca80a6a.png",
-    "processing": "Original user-supplied screenshot, copied unchanged"
+    "processing": "User-supplied screenshot. Only the sidebar wordmark was replaced with neutral text (\"Paradise\"); every other pixel is unchanged"
   }
 ]

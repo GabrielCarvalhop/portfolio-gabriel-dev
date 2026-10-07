@@ -1,7 +1,7 @@
 # Capa do projeto Adega Fácil
 
 Ferramenta: imagegen integrada (edição de imagem).
-Arquivo aplicado: public/projects/adega-painel-clean.png
+Arquivo aplicado: public/projects/pdv-painel-clean.png (renomeado; o nome da marca foi substituído depois, junto com pdv-capa.png e pdv-caixas.png)
 Origem: captura fornecida pelo usuário. Original preservado.
 
 ## Prompt final

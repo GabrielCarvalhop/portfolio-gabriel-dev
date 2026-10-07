@@ -43,7 +43,7 @@ try {
   const routes = [
     '/',
     '/projetos',
-    '/projetos/sistema-pdv-adegas',
+    '/projetos/sistema-pdv',
     '/projetos/plataforma-ecommerce',
     '/projetos/website-nutricionista',
     '/projetos/clinica-odontologica',
@@ -80,7 +80,7 @@ try {
         .getAttribute('href')
         .catch(() => null),
     });
-    if (['/projetos', '/projetos/sistema-pdv-adegas'].includes(route))
+    if (['/projetos', '/projetos/sistema-pdv'].includes(route))
       await page.screenshot({
         path: `quality/${route === '/projetos' ? 'projects' : 'case'}-1440.png`,
         fullPage: true,
@@ -116,7 +116,7 @@ try {
   await page.waitForFunction(() => document.querySelectorAll('.project-card').length === 5);
   report.interactions.push('All category filters and empty-state recovery passed');
   await page.locator('.project-card').first().locator('.project-visual').click();
-  await page.waitForURL('**/projetos/sistema-pdv-adegas');
+  await page.waitForURL('**/projetos/sistema-pdv');
   await page.locator('.next-project').click();
   await page.waitForURL('**/projetos/plataforma-ecommerce');
   report.interactions.push('Portfolio → case → next case passed');
@@ -149,7 +149,7 @@ try {
   await page.waitForURL('**/projetos');
   await page.locator('.mobile-nav').waitFor({ state: 'hidden' });
   report.interactions.push('Mobile menu, Escape, focus restoration and navigation passed');
-  for (const route of ['/projetos', '/projetos/sistema-pdv-adegas']) {
+  for (const route of ['/projetos', '/projetos/sistema-pdv']) {
     await page.goto(`http://localhost:3000${route}`, { waitUntil: 'networkidle' });
     await page.locator('img').evaluateAll((images) =>
       images.forEach((image) => {

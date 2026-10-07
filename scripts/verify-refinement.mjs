@@ -67,7 +67,7 @@ try {
     .first()
     .evaluate((el) => getComputedStyle(el).viewTransitionName);
   await page.locator('.project-visual').first().click();
-  await page.waitForURL('**/projetos/sistema-pdv-adegas');
+  await page.waitForURL('**/projetos/sistema-pdv');
   await expect(page.locator('.case-cover img')).toBeVisible();
   expect(
     await page.locator('.case-cover img').evaluate((el) => getComputedStyle(el).viewTransitionName),

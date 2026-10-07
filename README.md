@@ -23,7 +23,7 @@ npm start
 - Home com hero interativo, tecnologias, projetos selecionados, apresentação, stack, processo, serviços e seção final.
 - `/projetos` com seis filtros, contagem dinâmica e estado vazio.
 - `/projetos/[slug]` com contexto, desafio, abordagem, desenvolvimento, imagens, direção de resultado e próximo projeto.
-- Cinco apresentações iniciais: PDV para adegas, e-commerce, nutrição, odontologia e energia solar.
+- Cinco apresentações iniciais: PDV multi-loja, e-commerce, nutrição, odontologia e energia solar.
 - Menu móvel com Escape, contenção de foco e bloqueio de rolagem; links e controles operáveis por teclado.
 - Metadados individuais, canonical, JSON-LD, sitemap, robots e imagens Open Graph de 1200 × 630.
 - Página 404 e estado de erro; navegação nativa mantém a página atual até o próximo documento estar pronto.
@@ -46,7 +46,7 @@ O conteúdo está em `data/projects.ts`; o tipo está em `types/project.ts`. Adi
 - `featured`: inclui o projeto na seleção da Home.
 - `theme`: classe visual; reutilize uma existente ou acrescente uma em `app/globals.css`.
 
-Os cases de PDV Paradise, e-commerce e Rayssa Zaniti usam as capturas fornecidas pelo proprietário. As galerias preservam os registros originais, com acesso à imagem completa; a capa do PDV é uma recomposição identificada no case para melhorar o enquadramento. Capas e imagens das galerias abrem em um visualizador dentro do site, com “Voltar ao projeto”, botão de fechar e Escape, preservando a posição e o foco ao retornar. Os demais estudos continuam identificados como conceituais. A origem dos arquivos está em `quality/refinement/project-assets-provenance.json` e a recomposição em `quality/refinement/pdv-cover-generation.md`. Anos e tecnologias ainda não confirmados permanecem sinalizados nos cases.
+Os cases de PDV Paradise, e-commerce e Rayssa Zaniti usam as capturas fornecidas pelo proprietário. As galerias preservam os registros fornecidos (com o nome da marca substituído nas capturas), com acesso à imagem completa; a capa do PDV é uma recomposição identificada no case para melhorar o enquadramento. Capas e imagens das galerias abrem em um visualizador dentro do site, com “Voltar ao projeto”, botão de fechar e Escape, preservando a posição e o foco ao retornar. Os demais estudos continuam identificados como conceituais. A origem dos arquivos está em `quality/refinement/project-assets-provenance.json` e a recomposição em `quality/refinement/pdv-cover-generation.md`. Anos e tecnologias ainda não confirmados permanecem sinalizados nos cases.
 
 Para regenerar as ilustrações vetoriais após editar sua composição:
 

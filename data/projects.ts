@@ -12,18 +12,18 @@ export const categories: ('Todos' | Category)[] = [
 export const projects: Project[] = [
   {
     id: '01',
-    slug: 'sistema-pdv-adegas',
+    slug: 'sistema-pdv',
     title: 'Operação em fluxo.',
     subtitle: 'Sistema PDV Paradise',
     category: 'Sistemas',
-    client: 'Projeto independente · sistema para adegas',
+    client: 'Projeto independente · sistema de PDV multi-loja',
     description:
       'Do balcão ao estoque. Uma operação conectada para vender, organizar e acompanhar o negócio.',
     stack: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL'],
-    cover: '/projects/pdv-cover.png',
+    cover: '/projects/pdv-capa.png',
     mediaNote:
-      'Capa recomposta a partir das telas fornecidas pelo autor, com enquadramento ajustado. As capturas de venda e caixa estão disponíveis abaixo em sua versão original.',
-    theme: 'adega',
+      'Capa recomposta a partir das telas fornecidas pelo autor, com enquadramento ajustado e o nome da marca substituído. As capturas de venda e caixa estão disponíveis abaixo.',
+    theme: 'pdv',
     featured: true,
     screenshots: [
       {
@@ -34,14 +34,14 @@ export const projects: Project[] = [
         height: 624,
       },
       {
-        src: '/projects/pdv-caixa.png',
+        src: '/projects/pdv-caixas.png',
         alt: 'Gestão de terminais de caixa com abertura, suprimento, sangria e fechamento',
         caption: 'Terminais de caixa · captura fornecida',
         width: 1916,
         height: 822,
       },
       {
-        src: '/projects/adega-painel-clean.png',
+        src: '/projects/pdv-painel-clean.png',
         alt: 'Painel de lojas sem registros cadastrados visíveis',
         caption: 'Painel de lojas · registros removidos',
         width: 2032,
@@ -49,7 +49,7 @@ export const projects: Project[] = [
       },
     ],
     context:
-      'Um sistema para conectar as rotinas de uma adega: registrar vendas, consultar produtos, acompanhar pedidos e operar terminais de caixa. Os registros apresentados mostram a interface de venda e a gestão de caixas.',
+      'Um sistema para conectar as rotinas de uma operação de varejo: registrar vendas, consultar produtos, acompanhar pedidos e operar terminais de caixa. Os registros apresentados mostram a interface de venda e a gestão de caixas.',
     challenge:
       'Manter o atendimento rápido sem perder a consistência do estoque. A interface precisa reduzir a troca de telas, deixar as ações prioritárias visíveis e dar clareza sobre o estado de cada pedido.',
     solution:
@@ -76,7 +76,7 @@ export const projects: Project[] = [
       'Composição da tela de venda do PDV, com navegação lateral, busca de produtos e resumo de pagamento',
     previewLabel: 'VENDA E GESTÃO',
     galleryNote:
-      'Registros da interface de venda, gestão de caixas e painel de lojas. O painel de lojas foi editado para remover seus registros.',
+      'Registros da interface de venda, gestão de caixas e painel de lojas. O painel de lojas foi editado para remover seus registros, e o nome da marca foi substituído nas capturas.',
   },
   {
     id: '02',

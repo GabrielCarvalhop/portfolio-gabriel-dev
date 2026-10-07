@@ -21,9 +21,6 @@ const svg = (content, bg = '#f4f5ef') =>
   `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="850" viewBox="0 0 1200 850">${rect(0, 0, 1200, 850, bg)}${content}</svg>`;
 const browser = (name, color = '#e6e9df') =>
   `${rect(0, 0, 1200, 40, color)}${[20, 34, 48].map((x) => circle(x, 20, 4, '#8f9987')).join('')}${text(470, 25, `${name} / estudo de interface`, 11, '#63705a')}`;
-function bottle(x, y, color = '#2d3827', label = '#eee5c9', scale = 1) {
-  return `<g transform="translate(${x} ${y}) scale(${scale})">${rect(25, 0, 21, 38, color, 3)}${rect(25, 0, 21, 10, '#d8cfae', 2)}<path d="M25 32C25 48 7 45 7 63V153Q7 162 17 162H54Q64 162 64 153V63C64 45 46 48 46 32Z" fill="${color}"/>${rect(9, 91, 53, 45, label, 1)}${text(35, 109, 'A', 15, color, 600)}${text(19, 124, 'SELEÇÃO', 6, color)}<path d="M17 66V85" stroke="#ffffff30" stroke-width="5" stroke-linecap="round"/></g>`;
-}
 function chair(x, y, scale = 1) {
   return `<g transform="translate(${x} ${y}) scale(${scale})"><ellipse cx="127" cy="292" rx="137" ry="20" fill="#3a231317"/><path d="M21 68Q25 12 94 10H185Q226 14 228 65L216 158H27Z" fill="#9c4f32"/><path d="M30 87Q64 75 100 78L207 91L200 171H30Z" fill="#b36b47"/><path d="M21 150Q39 128 78 135L224 155L233 205Q148 229 11 192Z" fill="#bb744f"/><path d="M25 195L12 293M217 207L241 291M59 201L69 263M188 213L177 270" stroke="#613f2c" stroke-width="13"/><path d="M10 95L0 172Q2 186 25 188M233 97L244 175Q244 191 228 192" stroke="#68432d" stroke-width="11" fill="none"/><path d="M7 94L71 102M230 98L176 106" stroke="#87573b" stroke-width="17" stroke-linecap="round"/></g>`;
 }
@@ -41,87 +38,6 @@ function leaves(x, y, scale = 1) {
     )
     .join('')}</g>`;
 }
-let adega = browser('adega');
-adega += rect(0, 40, 83, 810, '#1e2a20') + text(26, 92, 'a.', 40, '#c4e99b', 600);
-['▦', '○', '□', '◇'].forEach((v, i) => {
-  adega +=
-    rect(20, 133 + i * 69, 43, 43, i === 0 ? '#c3dfaa' : '#2d3b2b', 6) +
-    text(33, 161 + i * 69, v, 20, i === 0 ? '#243321' : '#9aae8f');
-});
-adega +=
-  text(115, 96, 'Frente de caixa', 28, '#263324', 600) +
-  text(115, 124, 'Organize a venda. Cuide do atendimento.', 13, '#72806a');
-adega +=
-  rect(115, 154, 668, 46, '#fff', 6, '#dce3d7') +
-  text(136, 183, 'Buscar no catálogo...', 14, '#7c8775');
-['Todos', 'Vinhos', 'Cervejas', 'Destilados', 'Sem álcool'].forEach((label, i) => {
-  adega +=
-    rect(115 + i * 131, 220, 119, 35, i === 0 ? '#29402b' : '#e8ede2', 5) +
-    text(130 + i * 131, 242, label, 12, i === 0 ? '#edf2e9' : '#53634a');
-});
-const drinks = [
-  'Vinho tinto reserva',
-  'Cerveja artesanal',
-  'Whisky seleção',
-  'Vinho branco',
-  'Gin botânico',
-  'Espumante brut',
-];
-drinks.forEach((name, i) => {
-  const x = 115 + (i % 3) * 229,
-    y = 277 + Math.floor(i / 3) * 254;
-  adega +=
-    rect(x, y, 211, 235, '#fff', 7, '#e1e5db') +
-    rect(x + 10, y + 10, 191, 149, '#f0f2e9', 4) +
-    bottle(
-      x + 83,
-      y + 17,
-      ['#3a352a', '#75502a', '#6c4329', '#64704b', '#3e5950', '#3a4930'][i],
-      '#eee9d5',
-      0.8,
-    ) +
-    text(x + 14, y + 182, name, 13, '#293627', 500) +
-    text(
-      x + 14,
-      y + 215,
-      ['R$ 89,90', 'R$ 18,90', 'R$ 129,90', 'R$ 79,90', 'R$ 99,90', 'R$ 69,90'][i],
-      14,
-      '#253922',
-      600,
-    ) +
-    rect(x + 169, y + 191, 28, 28, '#e2ecd9', 5) +
-    text(x + 178, y + 211, '+', 19, '#36552c');
-});
-adega +=
-  rect(824, 40, 376, 810, '#fff') +
-  text(851, 93, 'Pedido atual', 22, '#253322', 600) +
-  text(1117, 91, '#032', 12, '#7a8971') +
-  line(850, 121, 1175, 121) +
-  rect(850, 145, 326, 44, '#f0f3eb', 5) +
-  text(867, 173, '+ Vincular cliente', 13, '#65735b');
-['Vinho tinto reserva', 'Cerveja artesanal'].forEach((label, i) => {
-  let y = 216 + i * 102;
-  adega +=
-    rect(850, y, 59, 71, '#f0f2e8', 5) +
-    bottle(868, y + 7, i ? '#75502a' : '#3a352a', '#e6dfc8', 0.34) +
-    text(923, y + 23, label, 13, '#283723', 500) +
-    text(923, y + 46, i ? '2 × R$ 18,90' : '1 × R$ 89,90', 11, '#738066') +
-    text(923, y + 67, i ? 'R$ 37,80' : 'R$ 89,90', 13, '#283723', 600);
-});
-adega +=
-  line(850, 572, 1175, 572) +
-  text(850, 606, 'Subtotal', 13, '#75836a') +
-  text(1095, 606, 'R$ 127,70', 13, '#35482c') +
-  text(850, 640, 'Desconto', 13, '#75836a') +
-  text(1107, 640, 'R$ 0,00', 13, '#35482c') +
-  line(850, 661, 1175, 661) +
-  text(850, 698, 'Total', 20, '#293c22', 600) +
-  text(1056, 698, 'R$ 127,70', 24, '#293c22', 600) +
-  rect(850, 725, 326, 57, '#2e4a29', 6) +
-  text(936, 760, 'Finalizar venda  →', 16, '#f5f8f0', 500) +
-  text(928, 809, 'DADOS DEMONSTRATIVOS', 9, '#7b8b6f');
-writeFileSync('public/projects/adega.svg', svg(adega));
-
 let commerce =
   browser('forma', '#dfd9ce') +
   text(54, 109, 'forma', 36, '#3a332a', 500) +
@@ -236,16 +152,6 @@ writeFileSync('public/projects/solar.svg', svg(solar, '#18343d'));
 // Compact, original companion studies with mobile framing.
 const themes = [
   [
-    'adega',
-    '#e7ece0',
-    '#2e4a29',
-    'Seu pedido.',
-    'Tudo à vista.',
-    'Resumo da venda',
-    'Vinho tinto reserva',
-    'Cerveja artesanal',
-  ],
-  [
     'commerce',
     '#e9dfd2',
     '#684a36',
@@ -295,9 +201,7 @@ for (const [key, bg, ink, title1, title2, section, row1, row2] of themes) {
     text(
       388,
       115,
-      key === 'adega'
-        ? 'adega'
-        : key === 'commerce'
+      key === 'commerce'
           ? 'forma'
           : key === 'nutri'
             ? 'essência'
@@ -313,11 +217,6 @@ for (const [key, bg, ink, title1, title2, section, row1, row2] of themes) {
     text(389, 232, title2, 39, ink, 500);
   if (key === 'commerce') body += chair(540, 275, 0.65);
   else if (key === 'nutri') body += rect(391, 270, 418, 234, '#d0d9bf', 8) + leaves(524, 272, 0.55);
-  else if (key === 'adega')
-    body +=
-      rect(391, 270, 418, 234, '#d3dec7', 8) +
-      bottle(492, 290, '#3a352a', '#e9dfbf', 1.2) +
-      bottle(630, 326, '#775032', '#ede0bb', 0.95);
   else if (key === 'dental')
     body +=
       rect(391, 270, 418, 234, '#cbd8cd', 8) +
