@@ -22,7 +22,7 @@ export const projects: Project[] = [
     stack: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL'],
     cover: '/projects/pdv-capa.png',
     mediaNote:
-      'Capa recomposta a partir das telas fornecidas pelo autor, com enquadramento ajustado e o nome da marca substituído. As capturas de venda e caixa estão disponíveis abaixo.',
+      'Capa recomposta a partir das telas fornecidas pelo autor, com enquadramento ajustado. As capturas de venda e caixa estão disponíveis abaixo.',
     theme: 'pdv',
     featured: true,
     screenshots: [
@@ -76,7 +76,7 @@ export const projects: Project[] = [
       'Composição da tela de venda do PDV, com navegação lateral, busca de produtos e resumo de pagamento',
     previewLabel: 'VENDA E GESTÃO',
     galleryNote:
-      'Registros da interface de venda, gestão de caixas e painel de lojas. O painel de lojas foi editado para remover seus registros, e o nome da marca foi substituído nas capturas.',
+      'Registros da interface de venda, gestão de caixas e painel de lojas. O painel de lojas foi editado para remover seus registros.',
   },
   {
     id: '02',
